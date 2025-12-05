@@ -2,6 +2,11 @@ import React from "react";
 import { CartoonButton } from "../../../components/ui/cartoon-button";
 import bgimg from "../../../assets/bgimg.png";
 import AppointmentForm from "./AppointmentForm";
+import hero01 from "../../../assets/hero01.png";
+import hero02 from "../../../assets/hero02.png";
+import hero03 from "../../../assets/hero03.png";
+import hero04 from "../../../assets/hero04.png";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
@@ -63,9 +68,58 @@ const Hero = () => {
         >
           <AppointmentForm />
         </div>
+<motion.img
+  src={hero01}
+  alt=""
+  className="absolute top-40 left-10 w-20 h-20 rounded-3xl z-50"
+  initial={{ rotate: 45 }}   // <-- static rotate
+  animate={{
+    y: [0, -15, 0],          // <-- floating only
+  }}
+  transition={{
+    duration: 3,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+/>
+<motion.img
+  src={hero02}
+  alt=""
+  className="absolute top-80 right-10 w-20 h-20 rounded-3xl z-50"
+  initial={{ rotate: 0 }}   // <-- static rotate
+  animate={{
+    y: [0, -15, 0],          // <-- floating only
+  }}
+  transition={{
+    duration: 3,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+/>
+{/* <motion.img
+  src={hero04}
+  alt=""
+  className="absolute top-80 right-40 w-20 h-20 rounded-3xl z-50"
+  initial={{ rotate: 0 }}   // <-- static rotate
+  animate={{
+    y: [0, -15, 0],          // <-- floating only
+  }}
+  transition={{
+    duration: 3,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+/> */}
+
+
+
+
       </div>
     </div>
   );
 };
 
 export default Hero;
+
+
+

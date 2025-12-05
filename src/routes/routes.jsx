@@ -5,6 +5,7 @@ import HomePage from "../pages/home/components/HomePage";
 import Dashboard from "../admin/pages/Dashboard/Dashboard";
 import About from "../pages/about/About";
 import ContactPage from "../pages/contact/Contact";
+import ServiceDetail from "../pages/Services/componets/ServiceDetail";
 
 const AllRoutes = () => {
   return (
@@ -13,6 +14,7 @@ const AllRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/services/:id" element={<ServiceDetail />} />
     
         {/* <Route path="products/edit/:id" element={<EditProduct />} /> */}
       <Route

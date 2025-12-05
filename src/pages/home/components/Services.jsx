@@ -1,6 +1,8 @@
 import React from "react";
-import bgimg from "../../../assets/bgimg.png";
+import { ArrowRight, Sparkles } from "lucide-react";
 
+// Import your images
+import bgimg from "../../../assets/bgimg.png";
 import img01 from "../../../assets/service/img01.png";
 import img02 from "../../../assets/service/img02.png";
 import img03 from "../../../assets/service/img03.png";
@@ -22,35 +24,43 @@ import { CartoonButton } from "../../../components/ui/cartoon-button";
 
 const Services = () => {
   const servicesList = [
-    { img: img01, title: "Dental Checkup & X-Rays" },
-    { img: img02, title: "Orthodontics (Braces)" },
-    { img: img03, title: "Dental Implants" },
-    { img: img04, title: "Crowns and Bridges" },
-    { img: img05, title: "Root Canal Treatment (RCT)" },
-    { img: img06, title: "Teeth Whitening & Bleaching" },
-    { img: img07, title: "Teeth Cleaning & Polishing" },
-    // { img: img08, title: "Smile Designing" },
-    { img: img09, title: "Kids Dentistry" },
-    { img: img10, title: "Wisdom Teeth Extraction" },
-    { img: img11, title: "Tooth Colored Fillings" },
-    { img: img12, title: "Aligners and Gum Surgery" },
-    { img: img13, title: "Full Mouth Rehabilitation" },
-    { img: img14, title: "Facial Aesthetic" },
-    { img: img15, title: "Cosmetic & Laser Dental Treatment" },
-    { img: img16, title: "Dental Veneers and Laminates" },
-    { img: img17, title: "Digital Dentistry" },
+    { img: img01, title: "Dental Checkup & X-Rays", popular: true },
+    { img: img02, title: "Orthodontics (Braces)", popular: false },
+    { img: img03, title: "Dental Implants", popular: true },
+    { img: img04, title: "Crowns and Bridges", popular: false },
+    { img: img05, title: "Root Canal Treatment (RCT)", popular: true },
+    { img: img06, title: "Teeth Whitening & Bleaching", popular: true },
+    { img: img07, title: "Teeth Cleaning & Polishing", popular: false },
+    { img: img09, title: "Kids Dentistry", popular: false },
+    { img: img10, title: "Wisdom Teeth Extraction", popular: false },
+    { img: img11, title: "Tooth Colored Fillings", popular: false },
+    { img: img12, title: "Aligners and Gum Surgery", popular: true },
+    { img: img13, title: "Full Mouth Rehabilitation", popular: false },
+    { img: img14, title: "Facial Aesthetic", popular: false },
+    { img: img15, title: "Cosmetic & Laser Dental Treatment", popular: true },
+    { img: img16, title: "Dental Veneers and Laminates", popular: false },
+    { img: img17, title: "Digital Dentistry", popular: false },
   ];
 
   return (
-    <div className="py-20 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="py-20 bg-gradient-to-b from-white via-blue-50/30 to-white relative overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+      <div className="absolute top-40 right-10 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+      <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <div className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">
-            What We Offer
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-blue-50 text-blue-600 rounded-full text-sm font-semibold mb-4 shadow-sm">
+            <Sparkles className="w-4 h-4" />
+            <span>What We Offer</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Our Services
+            Our <span className="text-primary relative">
+              Services
+              {/* <span className="absolute -bottom-2 left-0 w-full h-1 bg-blue-400 rounded-full"></span> */}
+            </span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             We provide painless treatment, advanced technology, and the best
@@ -63,39 +73,92 @@ const Services = () => {
           {servicesList.map((service, index) => (
             <div
               key={index}
-              className="group bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-xl hover:-translate-y-2 hover:border-blue-200 transition-all duration-300 cursor-pointer"
+              className="group relative bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex flex-col items-center text-center hover:shadow-2xl hover:-translate-y-3 hover:border-blue-300 transition-all duration-500 cursor-pointer overflow-hidden"
             >
-              {/* Icon Container */}
-              <div className="w-28 h-28 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors">
+              {/* Popular Badge */}
+              {/* {service.popular && (
+                <div className="absolute top-3 right-3 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                  Popular
+                </div>
+              )} */}
+
+              {/* Animated Background Gradient on Hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-transparent to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Icon Container with Enhanced Styling */}
+              <div className="relative w-28 h-28 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-xl">
+                {/* Glow Effect */}
+                <div className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                
                 <img 
                   src={service.img} 
                   alt={service.title} 
-                  className="w-20 h-20 object-contain"
+                  className="w-20 h-20 object-contain relative z-10 drop-shadow-lg"
                 />
+                
+                {/* Decorative Corner Element */}
+                <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
               
-              {/* Title */}
-              <h3 className="text-gray-800 font-semibold text-base leading-snug group-hover:text-blue-600 transition-colors min-h-[48px] flex items-center">
+              {/* Title with Enhanced Styling */}
+              <h3 className="relative text-gray-800 font-bold text-base leading-snug group-hover:text-blue-600 transition-colors min-h-[48px] flex items-center mb-3">
                 {service.title}
               </h3>
+
+              {/* Hover Arrow Indicator */}
+              <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                <div className="flex items-center gap-2 text-blue-600 text-sm font-semibold">
+                  <span>Learn More</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+
+              {/* Bottom Border Animation */}
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-500 rounded-full"></div>
             </div>
           ))}
         </div>
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <p className="text-gray-600 mb-6">
-            Can't find what you're looking for?
-          </p>
-          {/* <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full transition-all shadow-lg hover:shadow-xl">
-            Contact Us for More Services
-          </button> */}
-          <CartoonButton
-            label="Contact Us for More Services"
-            className="bg-primary text-white font-semibold px-8 py-3 rounded-xl"
-          />
+          <div className="inline-block bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+            <p className="text-gray-600 mb-6 text-lg">
+              Can't find what you're looking for?
+            </p>
+            <CartoonButton
+              label="Contact Us for More Services"
+              className="bg-primary text-white font-semibold px-8 py-3 rounded-xl hover:scale-105 transition-transform"
+            />
+          </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes blob {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+          }
+          33% {
+            transform: translate(30px, -50px) scale(1.1);
+          }
+          66% {
+            transform: translate(-20px, 20px) scale(0.9);
+          }
+        }
+        
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+      `}</style>
     </div>
   );
 };

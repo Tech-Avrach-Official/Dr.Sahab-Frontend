@@ -13,14 +13,26 @@ const Navbar = () => {
       name: 'Services', 
       href: '/services',
       hasDropdown: true,
-      submenu: [
-        { name: 'Cosmetic Dentistry', href: '/services/cosmetic' },
-        { name: 'Orthodontics', href: '/services/orthodontics' },
-        { name: 'Precision Dentures', href: '/services/dentures' },
-        { name: 'Restorative Dentistry', href: '/services/restorative' },
-        { name: 'Teeth Whitening', href: '/services/whitening' },
-        { name: 'Dental Implants', href: '/services/implants' }
-      ]
+submenu: [
+  { name: "Dental Checkup & X-Rays", href: "/services/dental-checkup-x-rays" },
+  { name: "Orthodontics (Braces)", href: "/services/orthodontics-braces" },
+  { name: "Dental Implants", href: "/services/dental-implants" },
+  { name: "Crowns and Bridges", href: "/services/crowns-and-bridges" },
+  { name: "Root Canal Treatment (RCT)", href: "/services/root-canal-treatment-rct" },
+  { name: "Teeth Whitening & Bleaching", href: "/services/teeth-whitening-bleaching" },
+  { name: "Teeth Cleaning & Polishing", href: "/services/teeth-cleaning-polishing" },
+  { name: "Kids Dentistry", href: "/services/kids-dentistry" },
+  { name: "Wisdom Teeth Extraction", href: "/services/wisdom-teeth-extraction" },
+  // { name: "Tooth Colored Fillings", href: "/services/tooth-colored-fillings" },
+  // { name: "Aligners and Gum Surgery", href: "/services/aligners-gum-surgery" },
+  // { name: "Full Mouth Rehabilitation", href: "/services/full-mouth-rehabilitation" },
+  // { name: "Facial Aesthetic", href: "/services/facial-aesthetic" },
+  // { name: "Cosmetic & Laser Dental Treatment", href: "/services/cosmetic-laser-dental-treatment" },
+  // { name: "Dental Veneers and Laminates", href: "/services/dental-veneers-laminates" },
+  // { name: "Digital Dentistry", href: "/services/digital-dentistry" },
+]
+
+
     },
     { name: 'Contact', href: '/contact' },
     { name: 'Admin', href: '/admin' }
@@ -78,7 +90,7 @@ const Navbar = () => {
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: index * 0.05 }}
-                              className="block px-6 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors font-medium"
+                              className="block px-5 py-1 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors font-medium"
                             >
                               {item.name}
                             </motion.a>

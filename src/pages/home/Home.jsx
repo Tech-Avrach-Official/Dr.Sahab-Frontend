@@ -6,6 +6,7 @@ import Services from './components/Services'
 import BeforeAfterSlider from './components/BeforeAfterSlider'
 import Footer from '../../components/common/Footer'
 import AboutSection from './components/AboutSection'
+import DentistTestimonials from './components/DentistTestimonials'
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
         <Services/>
         <AboutSection/>
         <BeforeAfterSlider />
+        <DentistTestimonials/>
         <Footer/>
         {/* <HomePage/> */}
     </div>
