@@ -6,6 +6,7 @@ import Dashboard from "../admin/pages/Dashboard/Dashboard";
 import About from "../pages/about/About";
 import ContactPage from "../pages/contact/Contact";
 import ServiceDetail from "../pages/Services/componets/ServiceDetail";
+import AdminLogin from "../pages/adminLogin/AdminLogin";
 
 const AllRoutes = () => {
   return (
@@ -16,6 +17,8 @@ const AllRoutes = () => {
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/services/:id" element={<ServiceDetail />} />
     
+    <Route path="/admin/login" element={<AdminLogin />} />
+
         {/* <Route path="products/edit/:id" element={<EditProduct />} /> */}
       <Route
         path="/admin"

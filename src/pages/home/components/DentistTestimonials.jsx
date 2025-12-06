@@ -75,8 +75,8 @@ const DentistTestimonials = () => {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   const TestimonialCard = ({ testimonial }) => (
-    <div className="flex-shrink-0 w-80 md:w-96 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 mx-4">
-      <div className="flex items-start justify-between mb-4">
+    <div className="flex-shrink-0 w-72 md:w-96 bg-white rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 mx-4">
+      <div className="flex items-start justify-between mb-2 md:mb-4">
         <Quote className="w-10 h-10 text-blue-500 opacity-50" />
         <div className="flex gap-1">
           {[...Array(testimonial.rating)].map((_, i) => (
@@ -85,7 +85,7 @@ const DentistTestimonials = () => {
         </div>
       </div>
       
-      <p className="text-gray-700 mb-6 leading-relaxed">
+      <p className="text-gray-700 text-sm md:text-base mb-2 md:mb-6 leading-relaxed">
         "{testimonial.text}"
       </p>
       
@@ -93,7 +93,7 @@ const DentistTestimonials = () => {
         <img
           src={testimonial.image}
           alt={testimonial.name}
-          className="w-14 h-14 rounded-full object-cover border-2 border-blue-500"
+          className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border-2 border-blue-500"
         />
         <div>
           <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
@@ -107,10 +107,10 @@ const DentistTestimonials = () => {
     <div className="bg-white py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-16">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
             What Our <span className="text-blue-600">Patients Say</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-sm md:text-lg text-gray-600 max-w-2xl mx-auto">
             Don't just take our word for it. Hear from our happy patients about their experience with our dental care services.
           </p>
         </div>
@@ -162,8 +162,8 @@ const DentistTestimonials = () => {
         </div>
 
         {/* Gradient Overlays */}
-        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
-        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
+        <div className="absolute top-0 left-0 w-12 md:w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
+        <div className="absolute top-0 right-0 w-12 md:w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
       </div>
 
       {/* CTA Section */}

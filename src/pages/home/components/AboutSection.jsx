@@ -48,11 +48,11 @@ const AboutSection = () => {
               <span className="text-sm font-medium">About Us</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
               Experience Excellence in Medical Care
             </h1>
             
-            <p className="text-gray-600 text-lg leading-relaxed">
+            <p className="text-gray-600 text-sm md:text-lg leading-relaxed">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint quia molestiae rem cupiditate eius harum nostrum dignissimos commodi aut neque officia odit similique nulla soluta natus quibusdam minima asperiores, repellat eum vitae sequi optio odio consequatur? Quaerat, incidunt placeat aut amet ullam porro minus cum culpa. Pariatur quis quas cum.
             </p>
           </div>

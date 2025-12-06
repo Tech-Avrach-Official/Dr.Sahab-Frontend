@@ -10,8 +10,8 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <div className="h-full pb-[15rem]">
-      <div className="relative max-w-7xl rounded-2xl mx-auto bg-gradient-to-t from-[#2B4CA4] to-[#1D2236] pt-20 pb-72">
+    <div className="h-full px-2 md:pb-[15rem]">
+      <div className="relative max-w-7xl rounded-2xl mx-auto bg-gradient-to-t from-[#2B4CA4] to-[#1D2236] px-4 pt-20 pb-20 md:pb-72">
         {/* GRID OVERLAY */}
         <div
           className="w-full h-full absolute inset-0 opacity-50 z-10 rounded-2xl
@@ -24,24 +24,24 @@ const Hero = () => {
           {/* Satisfied Patients Badge */}
           <div className="inline-flex items-center gap-2 bg-[#ffffff28] backdrop-blur-sm px-6 py-2 rounded-full mb-6">
             <div className="flex -space-x-2">
-              <div className="w-8 h-8 rounded-full bg-gray-400 border-2 border-white"></div>
-              <div className="w-8 h-8 rounded-full bg-gray-400 border-2 border-white"></div>
-              <div className="w-8 h-8 rounded-full bg-gray-400 border-2 border-white"></div>
+              <div className="w-5 md:w-8 h-5 md:h-8 rounded-full bg-gray-400 border-2 border-white"></div>
+              <div className="w-5 md:w-8 h-5 md:h-8 rounded-full bg-gray-400 border-2 border-white"></div>
+              <div className="w-5 md:w-8 h-5 md:h-8 rounded-full bg-gray-400 border-2 border-white"></div>
             </div>
-            <span className="text-white font-semibold">
+            <span className="text-white text-sm md:text-base font-semibold">
               15k Satisfied Patients
             </span>
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold tracking-wide text-white mb-6">
+          <h1 className="text-3xl md:text-7xl font-bold tracking-wide text-white mb-6">
             Transforming smiles
             <br />
             with expert care
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg md:text-lg text-white max-w-xl font-medium mx-auto mb-8">
+          <p className="text-base md:text-lg text-white max-w-xl font-medium mx-auto mb-8">
             Experience personalized dental treatment designed to restore,
             protect, and enhance your smile with comfort and confidence
           </p>
@@ -53,12 +53,16 @@ const Hero = () => {
       </button> */}
           <CartoonButton
             label="Start Your Smile Journey"
-            className="bg-blue-600 text-lg rounded-2xl font-semibold text-white py-3 px-10"
+            className="bg-blue-600 text-sm md:text-lg rounded-2xl font-semibold text-white py-3 px-10"
           />
         </div>
 
+        {/* <div>
+          <AppointmentForm />
+        </div> */}
+
         <div
-          className="
+          className="hidden md:block 
       absolute left-1/2 bottom-0 
       -translate-x-1/2 translate-y-1/2 
       w-[80%] h-[29rem]
@@ -71,7 +75,7 @@ const Hero = () => {
 <motion.img
   src={hero01}
   alt=""
-  className="absolute top-40 left-10 w-20 h-20 rounded-3xl z-50"
+  className="absolute top-10 md:top-40 left-10 w-12 h-12 md:w-20 md:h-20 rounded-3xl z-50"
   initial={{ rotate: 45 }}   // <-- static rotate
   animate={{
     y: [0, -15, 0],          // <-- floating only
@@ -85,7 +89,7 @@ const Hero = () => {
 <motion.img
   src={hero02}
   alt=""
-  className="absolute top-80 right-10 w-20 h-20 rounded-3xl z-50"
+  className="absolute bottom-0 md:top-80 right-10 w-14 h-14 md:w-20 md:h-20 rounded-3xl z-50"
   initial={{ rotate: 0 }}   // <-- static rotate
   animate={{
     y: [0, -15, 0],          // <-- floating only

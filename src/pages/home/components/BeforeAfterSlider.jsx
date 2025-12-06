@@ -13,10 +13,10 @@ const BeforeAfterSlider = () => {
     <div className="bg-blue-50 py-20">
       <div className="max-w-7xl mx-auto ">
         <div>
-          <h2 className="text-5xl font-extrabold text-primary text-center">Before & After Result</h2>
-          <p className="text-center text-lg text-gray-500 mb-10">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-primary text-center">Before & After Result</h2>
+          <p className="text-center text-sm md:text-lg text-gray-500 mb-10">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
-       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-5 gap-10">
          <div className="rounded-2xl overflow-hidden shadow-lg bg-white">
           <ReactCompareImage leftImage={before} rightImage={after} />
         </div>
