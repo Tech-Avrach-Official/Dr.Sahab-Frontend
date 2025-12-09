@@ -87,3 +87,18 @@ export const deleteClinic = createAsyncThunk(
     }
   }
 );
+
+
+export const getClinicById = createAsyncThunk(
+  "clinic/getClinicById",
+  async (clinicId, { rejectWithValue }) => {
+    try {
+      const res = await api.get(`/clinic/${clinicId}`);
+      return res.data.clinic || res.data; // backend format safe
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to load clinic profile"
+      );
+    }
+  }
+);

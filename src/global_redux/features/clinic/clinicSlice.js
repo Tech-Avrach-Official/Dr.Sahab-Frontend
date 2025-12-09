@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createClinic, deleteClinic, getAllClinics, updateClinic } from "./clinicThunk";
+import { createClinic, deleteClinic, getAllClinics, getClinicById, updateClinic } from "./clinicThunk";
 
 const clinicSlice = createSlice({
   name: "clinic",
@@ -8,6 +8,10 @@ const clinicSlice = createSlice({
     clinic: null, // single clinic creation response
     clinics: [], // list of all clinics
     error: null,
+    clinicProfile: null,
+loadingProfile: false,
+profileError: null,
+
   },
 
   reducers: {},
@@ -68,7 +72,21 @@ const clinicSlice = createSlice({
 .addCase(deleteClinic.rejected, (state, action) => {
   state.loading = false;
   state.error = action.payload;
-});
+})
+
+
+.addCase(getClinicById.pending, (state) => {
+    state.loadingProfile = true;
+    state.profileError = null;
+  })
+  .addCase(getClinicById.fulfilled, (state, action) => {
+    state.loadingProfile = false;
+    state.clinicProfile = action.payload;
+  })
+  .addCase(getClinicById.rejected, (state, action) => {
+    state.loadingProfile = false;
+    state.profileError = action.payload;
+  });
   },
 });
 

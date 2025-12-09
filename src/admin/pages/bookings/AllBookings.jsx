@@ -135,8 +135,10 @@ const AllBookings = () => {
     const statusColors = {
       pending: "bg-yellow-100 text-yellow-800",
       confirmed: "bg-green-100 text-green-800",
-      cancelled: "bg-red-100 text-red-800",
-      completed: "bg-blue-100 text-blue-800",
+      assigned : "bg-blue-100 text-blue-800",
+      accepted : "bg-green-100 text-green-800",
+      // cancelled: "bg-red-100 text-red-800",
+      complete: "bg-green-300 text-black",
     };
 
     return (
@@ -229,7 +231,7 @@ const AllBookings = () => {
         </div>
       )}
 
-      {/* Bookings Table */}
+      {/* Bookings Table */} 
       {!loading && bookings?.length > 0 && (
         <div className="bg-white rounded-lg shadow overflow-hidden">
           <div className="overflow-x-auto">
@@ -245,9 +247,9 @@ const AllBookings = () => {
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Booking Date
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     DOB
-                  </th>
+                  </th> */}
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Location
                   </th>
@@ -257,9 +259,9 @@ const AllBookings = () => {
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Message
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Created At
-                  </th>
+                  </th> */}
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Actions
                   </th>
@@ -286,11 +288,11 @@ const AllBookings = () => {
                         {formatDate(booking.bookingDate)}
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    {/* <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-900">
                         {formatDate(booking.dob)}
                       </div>
-                    </td>
+                    </td> */}
                     <td className="px-6 py-4">
                       <div className="text-sm text-gray-900 max-w-xs">
                         {booking.location}
@@ -304,11 +306,11 @@ const AllBookings = () => {
                         {booking.message || "No message"}
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    {/* <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-900">
                         {formatDateTime(booking.createdAt)}
                       </div>
-                    </td>
+                    </td> */}
                     <td className="px-6 py-4 whitespace-nowrap">
                       <button
                         onClick={() => handleAssignClick(booking)}

@@ -4,6 +4,7 @@ import {
   getAssignedBookings,
   acceptClinicBooking,
   rejectClinicBooking,
+  completeClinicBooking,
 } from "./clinicBookingThunk";
 
 const clinicBookingSlice = createSlice({
@@ -81,7 +82,31 @@ const clinicBookingSlice = createSlice({
       .addCase(rejectClinicBooking.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      });
+      })
+      // 🔹 Complete Booking
+.addCase(completeClinicBooking.pending, (state) => {
+  state.loading = true;
+})
+.addCase(completeClinicBooking.fulfilled, (state, action) => {
+  state.loading = false;
+
+  const updated = action.payload;
+
+  // Update in main bookings list
+  state.bookings = state.bookings.map((b) =>
+    b._id === updated._id ? updated : b
+  );
+
+  // Update assigned list if needed
+  state.assignedBookings = state.assignedBookings.map((b) =>
+    b._id === updated._id ? updated : b
+  );
+})
+.addCase(completeClinicBooking.rejected, (state, action) => {
+  state.loading = false;
+  state.error = action.payload;
+});
+
   },
 });
 

@@ -1,15 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getClinicBookings } from "../../../global_redux/features/clinicBooking/clinicBookingThunk";
-import { Calendar, MapPin, Phone, MessageCircle } from "lucide-react";
+import { getClinicBookings, completeClinicBooking } from "../../../global_redux/features/clinicBooking/clinicBookingThunk";
+import { Calendar, MapPin, Phone, MessageCircle, CheckCircle } from "lucide-react";
 
 const ClinicBookings = () => {
   const dispatch = useDispatch();
   const { bookings, loading } = useSelector((state) => state.clinicBookings);
 
+  // Modal State
+  const [showModal, setShowModal] = useState(false);
+  const [selectedBooking, setSelectedBooking] = useState(null);
+  const [amount, setAmount] = useState("");
+
   useEffect(() => {
     dispatch(getClinicBookings());
   }, [dispatch]);
+
+  const openCompleteModal = (booking) => {
+    setSelectedBooking(booking);
+    setAmount("");
+    setShowModal(true);
+  };
+
+  const handleComplete = () => {
+    dispatch(
+      completeClinicBooking({
+        bookingId: selectedBooking._id,
+        amount,
+      })
+    ).then(() => {
+      setShowModal(false);
+    });
+  };
 
   return (
     <div className="p-6">
@@ -19,74 +41,90 @@ const ClinicBookings = () => {
         <p className="text-gray-600 mt-1">Bookings assigned to your clinic</p>
       </div>
 
-      {/* Loading State */}
-      {loading && (
-        <div className="flex justify-center items-center py-10">
-          <div className="animate-spin h-10 w-10 border-b-2 border-blue-600 rounded-full"></div>
-        </div>
-      )}
-
-      {/* No Bookings */}
-      {!loading && bookings.length === 0 && (
-        <div className="bg-white p-10 rounded-xl shadow text-center border">
-          <p className="text-gray-600 text-lg">No assigned bookings yet.</p>
-        </div>
-      )}
-
-      {/* Bookings List */}
+      {/* Booking Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {bookings.map((b) => (
           <div
             key={b._id}
             className="bg-white rounded-xl border shadow hover:shadow-lg transition p-6 flex flex-col justify-between"
           >
-            {/* Name */}
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              {b.name}
-            </h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">{b.name}</h3>
 
-            {/* Booking Details */}
             <div className="space-y-3">
-
-              {/* Phone */}
               <div className="flex items-center gap-2 text-gray-700">
-                <Phone size={18} className="text-gray-500" />
-                <span className="font-medium">{b.phone}</span>
+                <Phone size={18} /> {b.phone}
               </div>
 
-              {/* Booking Date */}
               <div className="flex items-center gap-2 text-gray-700">
-                <Calendar size={18} className="text-gray-500" />
-                <span className="font-medium">
-                  {new Date(b.bookingDate).toLocaleDateString("en-IN")}
-                </span>
+                <Calendar size={18} />{" "}
+                {new Date(b.bookingDate).toLocaleDateString("en-IN")}
               </div>
 
-              {/* Location */}
               {b.location && (
                 <div className="flex items-center gap-2 text-gray-700">
-                  <MapPin size={18} className="text-gray-500" />
-                  <span className="font-medium">{b.location}</span>
+                  <MapPin size={18} /> {b.location}
                 </div>
               )}
 
-              {/* Message */}
               {b.message && (
                 <div className="flex items-start gap-2 text-gray-700">
-                  <MessageCircle size={18} className="text-gray-500 mt-1" />
-                  <p className="text-sm leading-snug">{b.message}</p>
+                  <MessageCircle size={18} /> {b.message}
                 </div>
               )}
+            </div>
 
-              {/* Created At */}
-              <p className="text-xs text-gray-500 mt-2">
-                Assigned At:{" "}
-                {new Date(b.createdAt).toLocaleString("en-IN")}
-              </p>
+            <div className="mt-5">
+              {b.status !== "complete" ? (
+                <button
+                  onClick={() => openCompleteModal(b)}
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-lg flex items-center justify-center gap-2"
+                >
+                  <CheckCircle size={18} />
+                  Mark as Completed
+                </button>
+              ) : (
+                <p className="text-green-700 font-semibold text-center">
+                  ✔ Completed (₹{b.amount})
+                </p>
+              )}
             </div>
           </div>
         ))}
       </div>
+
+      {/* MODAL */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black/40 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-xl w-[350px] shadow-xl">
+            <h3 className="text-xl font-semibold mb-4 text-gray-900">
+              Enter Treatment Amount
+            </h3>
+
+            <input
+              type="number"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              placeholder="Enter amount (₹)"
+              className="w-full border p-2 rounded mb-4"
+            />
+
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => setShowModal(false)}
+                className="px-4 py-2 bg-gray-300 rounded-lg"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleComplete}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

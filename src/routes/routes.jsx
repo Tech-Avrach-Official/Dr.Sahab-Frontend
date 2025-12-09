@@ -16,6 +16,8 @@ import ProtectedClinicRoute from "../components/common/ProtectedClinicRoute";
 import ClinicLayout from "../clinic-dashboard/layout/ClinicLayout";
 import ClinicBookings from "../clinic-dashboard/pages/clinicBooking/ClinicBookings";
 import AssignedAppointments from "../clinic-dashboard/pages/clinicBooking/AssignedAppointments";
+import ClinicProfile from "../clinic-dashboard/pages/profile/ClinicProfile";
+import ClinicOffDaysPage from "../clinic-dashboard/pages/ClinicCelendar.jsx/ClinicOffDaysPage";
 
 const AllRoutes = () => {
   return (
@@ -61,6 +63,11 @@ const AllRoutes = () => {
         <Route path="/clinic/users" element={<HomePage />} />
         <Route path="/clinic/bookings" element={<ClinicBookings />} />
         <Route path="/clinic/notifications" element={<AssignedAppointments />} />
+        <Route path="/clinic/profile" element={<HomePage />} />
+        <Route path="/clinic/profile/:id" element={<ClinicProfile />} />
+
+        <Route path="/clinic/off-days" element={<ClinicOffDaysPage />} />
+
         {/* <Route path="/clinic/bookings" element={<AllBookings />} />
         <Route path="/clinic/all-clinics" element={<AllClinics />} />
         <Route path="/clinic/create-clinic" element={<CreateClinic />} />

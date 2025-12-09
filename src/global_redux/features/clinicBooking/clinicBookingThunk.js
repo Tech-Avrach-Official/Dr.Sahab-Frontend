@@ -72,3 +72,24 @@ export const rejectClinicBooking = createAsyncThunk(
     }
   }
 );
+
+
+export const completeClinicBooking = createAsyncThunk(
+  "clinicBookings/completeClinicBooking",
+  async ({ bookingId, amount }, { rejectWithValue }) => {
+    try {
+      const res = await api.post(`/clinic-booking/${bookingId}/complete`, {
+        amount,
+      });
+
+      toast.success("Appointment marked as completed!");
+      return res.data.booking;
+    } catch (error) {
+      const err =
+        error.response?.data?.message ||
+        "Failed to complete appointment.";
+      toast.error(err);
+      return rejectWithValue(err);
+    }
+  }
+);

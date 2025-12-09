@@ -1,15 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loginUser } from "./authThunk";
 
+const savedAuth = JSON.parse(localStorage.getItem("auth"));
+
 const authSlice = createSlice({
   name: "auth",
   initialState: {
     loading: false,
-    user: null,
-    role: null,
-    token: null,
+    user: savedAuth?.user || null,
+    role: savedAuth?.role || null,
+    token: savedAuth?.token || null,
     error: null,
   },
+
   reducers: {
     logout: (state) => {
       state.user = null;
@@ -18,24 +21,34 @@ const authSlice = createSlice({
       localStorage.removeItem("auth");
     },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
-  state.loading = true;
-  state.error = null;
-})
-.addCase(loginUser.fulfilled, (state, action) => {
-  state.loading = false;
-  state.user = action.payload.user;
-  state.role = action.payload.role;
+        state.loading = true;
+        state.error = null;
+      })
 
-  state.token = action.payload.token;
-})
-.addCase(loginUser.rejected, (state, action) => {
-  state.loading = false;
-  state.error = action.payload;
-});
+      .addCase(loginUser.fulfilled, (state, action) => {
+        const authData = {
+          user: action.payload.user,
+          role: action.payload.role,
+          token: action.payload.token,
+        };
 
+        state.loading = false;
+        state.user = authData.user;
+        state.role = authData.role;
+        state.token = authData.token;
+
+        // Save ALL data in localStorage
+        localStorage.setItem("auth", JSON.stringify(authData));
+      })
+
+      .addCase(loginUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
 });
 

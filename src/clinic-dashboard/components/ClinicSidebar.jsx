@@ -16,6 +16,8 @@ import {
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../global_redux/features/auth/authSlice";
+import { useSelector } from "react-redux";
+
 // import { logout } from "@/global_redux/features/auth/authSlice";
 
 const ClinicSidebar = () => {
@@ -23,6 +25,8 @@ const ClinicSidebar = () => {
   const [openSubMenu, setOpenSubMenu] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+const clinicId = useSelector((state) => state.auth.user?.id);
+
 
 //   const handleLogout = () => {
 //     dispatch(logout());
@@ -55,6 +59,19 @@ const ClinicSidebar = () => {
       icon: MessageSquare,
       path: "/clinic/notifications",
     },
+      ...(clinicId ? [{
+      id: "profile",
+      name: "Profile",
+      icon: ShoppingBag,
+      path: `/clinic/profile/${clinicId}`,
+    }] : []),
+    {
+      id: "notifications",
+      name: "Off Days",
+      icon: Tag,
+      path: "/clinic/off-days",
+    },
+
     
     // {
     //   id: "Clinic",
