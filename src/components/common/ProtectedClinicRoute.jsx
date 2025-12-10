@@ -1,8 +1,9 @@
 import { Navigate } from "react-router-dom";
 
 const ProtectedClinicRoute = ({ children }) => {
-  const token = localStorage.getItem("token");
-  const role = localStorage.getItem("role");
+  const auth = JSON.parse(localStorage.getItem("auth")); // ✅ FIXED
+  const token = auth?.token;
+  const role = auth?.role;
 
   if (!token || role !== "clinic") {
     return <Navigate to="/admin/login" replace />;
