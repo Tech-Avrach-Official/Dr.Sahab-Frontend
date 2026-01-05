@@ -53,7 +53,7 @@ const AboutSection = () => {
             </h1>
             
             <p className="text-gray-600 text-sm md:text-lg leading-relaxed">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint quia molestiae rem cupiditate eius harum nostrum dignissimos commodi aut neque officia odit similique nulla soluta natus quibusdam minima asperiores, repellat eum vitae sequi optio odio consequatur? Quaerat, incidunt placeat aut amet ullam porro minus cum culpa. Pariatur quis quas cum.
+              A Stress-Free Dental Experience at Dr. Sahab Clinic. We know that a visit to the dentist can be intimidating. At Dr. Sahab Clinic, Indore, we’ve redesigned the dental experience to be as comfortable and painless as possible. Our clinic is equipped with the latest dental technology to provide precise results in a relaxing environment. Whether you are looking for a complete smile makeover or gentle care for your family, Dr. Sahab and his team are here to guide you every step of the way. Your comfort is our priority, and your smile is our reward.
             </p>
           </div>
 

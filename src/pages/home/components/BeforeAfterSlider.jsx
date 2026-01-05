@@ -4,10 +4,10 @@ import ReactCompareImage from "react-compare-image";
 
 const BeforeAfterSlider = () => {
   const before =
-    "https://demo.awaikenthemes.com/denture/wp-content/uploads/2025/09/transformation-img-after-3.jpg";
+    "https://mccormickorthodontics.com/wp-content/uploads/crowding-dc-before.jpg";
 
   const after =
-    "https://demo.awaikenthemes.com/denture/wp-content/uploads/2025/09/transformation-img-before-3.jpg";
+    "https://mccormickorthodontics.com/wp-content/uploads/crowding-dc-after.jpg";
 
   return (
     <div className="bg-blue-50 py-20">
@@ -29,14 +29,14 @@ const BeforeAfterSlider = () => {
         </div>
 
         <div className="rounded-2xl overflow-hidden shadow-lg bg-white">
-          <ReactCompareImage  leftImage={'https://demo.awaikenthemes.com/denture/wp-content/uploads/2025/09/transformation-img-before-5.jpg'} rightImage={'https://demo.awaikenthemes.com/denture/wp-content/uploads/2025/09/transformation-img-after-5.jpg'} />
+          <ReactCompareImage  leftImage={'https://mccormickorthodontics.com/wp-content/uploads/crowding-bc-before.jpg'} rightImage={'https://mccormickorthodontics.com/wp-content/uploads/crowding-bc-after.jpg'} />
         </div>
         <div className="rounded-2xl overflow-hidden shadow-lg bg-white">
           <ReactCompareImage leftImage={'https://brijdentalclinic.com/wp-content/uploads/2018/07/2-2-1200x800_c.jpg'} rightImage={'https://brijdentalclinic.com/wp-content/uploads/2018/07/10-2-1200x800_c.jpg'} />
         </div>
        
         <div className="rounded-2xl overflow-hidden shadow-lg bg-white">
-          <ReactCompareImage leftImage={"https://brijdentalclinic.com/wp-content/uploads/2018/07/Grayish-White-Teeth.jpg"} rightImage={"https://brijdentalclinic.com/wp-content/uploads/2018/07/After-Emax-Veneer..jpg"} />
+          <ReactCompareImage leftImage={"https://mccormickorthodontics.com/wp-content/uploads/crowding-sr-before.jpg"} rightImage={"https://mccormickorthodontics.com/wp-content/uploads/crowding-sr-after.jpg"} />
         </div>
        </div>
       </div>

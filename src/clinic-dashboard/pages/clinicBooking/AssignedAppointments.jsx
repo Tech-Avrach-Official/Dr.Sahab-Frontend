@@ -128,3 +128,148 @@ const AssignedAppointments = () => {
 };
 
 export default AssignedAppointments;
+
+// import React, { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import {
+//   getAssignedBookings,
+//   acceptClinicBooking,
+//   rejectClinicBooking,
+// } from "../../../global_redux/features/clinicBooking/clinicBookingThunk";
+
+// import { Calendar, MapPin, Phone, MessageCircle, User } from "lucide-react";
+
+// const AssignedAppointments = () => {
+//   const dispatch = useDispatch();
+//   const { assignedBookings, assignedCount, loading } = useSelector(
+//     (state) => state.clinicBookings
+//   );
+
+//   useEffect(() => {
+//     dispatch(getAssignedBookings());
+//   }, [dispatch]);
+
+//   const handleAccept = (id) => {
+//     dispatch(acceptClinicBooking(id));
+//   };
+
+//   const handleReject = (id) => {
+//     if (window.confirm("Are you sure you want to reject this appointment?")) {
+//       dispatch(rejectClinicBooking(id));
+//     }
+//   };
+
+//   return (
+//     <div className="p-4 md:p-8 bg-gray-50 min-h-screen">
+//       <div className="max-w-7xl mx-auto">
+//         {/* Header */}
+//         <div className="mb-10">
+//           <h2 className="text-4xl font-extrabold text-slate-900 leading-tight">
+//             Assigned Appointments
+//           </h2>
+//           <p className="text-slate-500 text-lg mt-2">
+//             You have <span className="font-bold text-indigo-600">{assignedCount}</span> pending reviews
+//           </p>
+//         </div>
+
+//         {/* Loading/Empty States */}
+//         {loading && <div className="text-center py-10 animate-pulse">Loading...</div>}
+//         {!loading && assignedBookings.length === 0 && (
+//           <div className="text-center py-20 bg-white rounded-3xl border shadow-sm text-gray-400">
+//             No appointments assigned yet.
+//           </div>
+//         )}
+
+//         {/* The Grid */}
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+//           {assignedBookings.map((book) => (
+//             <div
+//               key={book._id}
+//               className="bg-white rounded-3xl shadow-lg border border-gray-100 flex flex-col h-full overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+//             >
+//               {/* Header: Profile */}
+//               <div className="p-8 pb-4 flex items-center gap-5">
+//                 <div className="bg-indigo-600 p-4 rounded-2xl shadow-md">
+//                   <User size={28} className="text-white" />
+//                 </div>
+//                 <div>
+//                   <span className="text-[10px] font-black uppercase tracking-widest text-indigo-500">Client</span>
+//                   <h3 className="text-2xl font-bold text-slate-800 tracking-tight leading-none">
+//                     {book.name}
+//                   </h3>
+//                 </div>
+//               </div>
+
+//               {/* Body: Vertical Info */}
+//               <div className="px-8 flex-grow">
+//                 <hr className="my-4 border-gray-100" />
+                
+//                 <div className="space-y-6">
+//                   {/* Phone */}
+//                   <div className="flex items-center justify-between">
+//                     <div className="flex items-center gap-3 text-slate-400">
+//                       <Phone size={18} />
+//                       <span className="text-sm font-semibold">Phone</span>
+//                     </div>
+//                     <span className="text-sm font-bold text-slate-700">{book.phone}</span>
+//                   </div>
+
+//                   {/* Date */}
+//                   <div className="flex items-center justify-between">
+//                     <div className="flex items-center gap-3 text-slate-400">
+//                       <Calendar size={18} />
+//                       <span className="text-sm font-semibold">Booking Date</span>
+//                     </div>
+//                     <span className="text-sm font-bold text-slate-700">
+//                       {new Date(book.bookingDate).toLocaleDateString("en-IN")}
+//                     </span>
+//                   </div>
+
+//                   {/* Location */}
+//                   {book.location && (
+//                     <div className="flex items-center justify-between">
+//                       <div className="flex items-center gap-3 text-slate-400">
+//                         <MapPin size={18} />
+//                         <span className="text-sm font-semibold">Location</span>
+//                       </div>
+//                       <span className="text-sm font-bold text-slate-700 truncate max-w-[120px]">
+//                         {book.location}
+//                       </span>
+//                     </div>
+//                   )}
+
+//                   {/* Message Section */}
+//                   <div className="mt-6 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+//                     <div className="flex items-center gap-2 mb-2 text-slate-400">
+//                       <MessageCircle size={14} />
+//                       <span className="text-[10px] font-bold uppercase tracking-widest">Client Message</span>
+//                     </div>
+//                     <p className="text-sm text-slate-600 italic">"{book.message}"</p>
+//                   </div>
+//                 </div>
+//               </div>
+
+//               {/* Footer: Bottom aligned buttons */}
+//               <div className="mt-8 p-6 bg-slate-50/50 border-t border-gray-50 flex items-center justify-end gap-4">
+//                 <button
+//                   onClick={() => handleReject(book._id)}
+//                   className="px-6 py-2.5 text-sm font-bold text-red-500 hover:bg-red-50 rounded-xl transition-colors"
+//                 >
+//                   Reject
+//                 </button>
+//                 <button
+//                   onClick={() => handleAccept(book._id)}
+//                   className="px-8 py-3 bg-emerald-600 text-white font-bold text-sm rounded-xl shadow-lg shadow-emerald-200 hover:bg-emerald-700 hover:-translate-y-0.5 transition-all"
+//                 >
+//                   Accept Booking
+//                 </button>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default AssignedAppointments;

@@ -6,6 +6,9 @@ import hero01 from "../../../assets/hero01.png";
 import hero02 from "../../../assets/hero02.png";
 import hero03 from "../../../assets/hero03.png";
 import hero04 from "../../../assets/hero04.png";
+import thumb2 from "../../../assets/thumb (2).png"
+import thumb3 from "../../../assets/thumb (3).png"
+import thumb4 from "../../../assets/thumb(4).jpeg"
 import { motion } from "framer-motion";
 
 const Hero = () => {
@@ -24,9 +27,22 @@ const Hero = () => {
           {/* Satisfied Patients Badge */}
           <div className="inline-flex items-center gap-2 bg-[#ffffff28] backdrop-blur-sm px-6 py-2 rounded-full mb-6">
             <div className="flex -space-x-2">
-              <div className="w-5 md:w-8 h-5 md:h-8 rounded-full bg-gray-400 border-2 border-white"></div>
-              <div className="w-5 md:w-8 h-5 md:h-8 rounded-full bg-gray-400 border-2 border-white"></div>
-              <div className="w-5 md:w-8 h-5 md:h-8 rounded-full bg-gray-400 border-2 border-white"></div>
+              {/* Added imported assets here */}
+              <img 
+                src={thumb2} 
+                alt="Patient" 
+                className="w-5 md:w-8 h-5 md:h-8 rounded-full border-2 border-white object-cover" 
+              />
+              <img 
+                src={thumb3} 
+                alt="Patient" 
+                className="w-5 md:w-8 h-5 md:h-8 rounded-full border-2 border-white object-cover object-top" 
+              />
+              <img 
+                src={thumb4} 
+                alt="Patient" 
+                className="w-5 md:w-8 h-5 md:h-8 rounded-full border-2 border-white object-cover" 
+              />
             </div>
             <span className="text-white text-sm md:text-base font-semibold">
               15k Satisfied Patients
@@ -47,10 +63,6 @@ const Hero = () => {
           </p>
 
           {/* CTA Button */}
-          {/* <button className="bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-4 rounded-full inline-flex items-center gap-2 transition-all">
-        Start Your Smile Journey
-        <span>→</span>
-      </button> */}
           <CartoonButton
             label="Start Your Smile Journey"
             to="/contact"
@@ -58,10 +70,7 @@ const Hero = () => {
           />
         </div>
 
-        {/* <div>
-          <AppointmentForm />
-        </div> */}
-
+        {/* Appointment Form */}
         <div
           className="hidden md:block 
       absolute left-1/2 bottom-0 
@@ -73,13 +82,15 @@ const Hero = () => {
         >
           <AppointmentForm />
         </div>
+
+        {/* Floating Background Images */}
         <motion.img
           src={hero01}
           alt=""
           className="absolute top-10 md:top-40 left-10 w-12 h-12 md:w-20 md:h-20 rounded-3xl z-40"
-          initial={{ rotate: 45 }}   // <-- static rotate
+          initial={{ rotate: 45 }}
           animate={{
-            y: [0, -15, 0],          // <-- floating only
+            y: [0, -15, 0],
           }}
           transition={{
             duration: 3,
@@ -91,9 +102,9 @@ const Hero = () => {
           src={hero02}
           alt=""
           className="absolute bottom-0 md:top-80 right-10 w-14 h-14 md:w-20 md:h-20 rounded-3xl z-40"
-          initial={{ rotate: 0 }}   // <-- static rotate
+          initial={{ rotate: 0 }}
           animate={{
-            y: [0, -15, 0],          // <-- floating only
+            y: [0, -15, 0],
           }}
           transition={{
             duration: 3,
@@ -101,30 +112,9 @@ const Hero = () => {
             ease: "easeInOut",
           }}
         />
-        {/* <motion.img
-  src={hero04}
-  alt=""
-  className="absolute top-80 right-40 w-20 h-20 rounded-3xl z-50"
-  initial={{ rotate: 0 }}   // <-- static rotate
-  animate={{
-    y: [0, -15, 0],          // <-- floating only
-  }}
-  transition={{
-    duration: 3,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
-/> */}
-
-
-
-
       </div>
     </div>
   );
 };
 
 export default Hero;
-
-
-

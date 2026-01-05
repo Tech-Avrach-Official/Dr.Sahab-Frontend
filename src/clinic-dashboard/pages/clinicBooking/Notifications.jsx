@@ -6,15 +6,20 @@ import {
   rejectClinicBooking,
 } from "../../../global_redux/features/clinicBooking/clinicBookingThunk";
 
+import { Calendar, MapPin, Phone, MessageCircle, User, X, Search, Filter } from "lucide-react";
+
 const Notifications = () => {
   const dispatch = useDispatch();
-
-  const { assignedBookings, assignedCount, loading } = useSelector(
+  const { assignedBookings, loading } = useSelector(
     (state) => state.clinicBookings
   );
 
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+
+  // --- FILTER STATE ---
+  const [searchTerm, setSearchTerm] = useState("");
+  const [timeFilter, setTimeFilter] = useState("all");
 
   useEffect(() => {
     dispatch(getAssignedBookings());
@@ -52,63 +57,100 @@ const Notifications = () => {
     });
   };
 
+  // --- FILTER LOGIC ---
+  const safeBookings = Array.isArray(assignedBookings) ? assignedBookings : [];
+
+  const filteredBookings = safeBookings.filter((book) => {
+    const term = searchTerm.toLowerCase();
+    const matchesSearch = 
+      book.name?.toLowerCase().includes(term) ||
+      book.phone?.includes(term);
+
+    if (!matchesSearch) return false;
+
+    if (timeFilter === "all") return true;
+
+    const bDate = new Date(book.bookingDate);
+    const now = new Date();
+    const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const startOfBooking = new Date(bDate.getFullYear(), bDate.getMonth(), bDate.getDate());
+
+    if (timeFilter === "today") {
+      return startOfBooking.getTime() === startOfToday.getTime();
+    }
+    if (timeFilter === "week") {
+      const sevenDaysAgo = new Date(startOfToday);
+      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+      return startOfBooking >= sevenDaysAgo && startOfBooking <= startOfToday;
+    }
+    if (timeFilter === "month") {
+      return bDate.getMonth() === now.getMonth() && bDate.getFullYear() === now.getFullYear();
+    }
+    return true;
+  });
+
   return (
-    <div className="p-6">
-      {/* Header */}
-      <div className="mb-6">
+    <div className="p-6 bg-slate-50 min-h-screen">
+      {/* Clean Header with Filters */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <h2 className="text-3xl font-bold text-gray-900">Assigned Appointments</h2>
-        <p className="text-gray-600">
-          You have <b>{assignedCount}</b> new assigned appointments.
-        </p>
+
+        <div className="flex items-center gap-3">
+          {/* Time Filter Dropdown */}
+          <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-xl px-3 py-2 shadow-sm">
+            <Filter size={16} className="text-gray-400" />
+            <select
+              value={timeFilter}
+              onChange={(e) => setTimeFilter(e.target.value)}
+              className="text-sm font-semibold focus:outline-none bg-transparent cursor-pointer text-gray-700"
+            >
+              <option value="all">All Dates</option>
+              <option value="today">Today</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+            </select>
+          </div>
+
+          {/* Search Bar */}
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-4 pr-10 py-2.5 w-64 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 outline-none shadow-sm"
+            />
+            {searchTerm ? (
+              <X size={16} className="absolute right-3 top-3 text-gray-400 cursor-pointer" onClick={() => setSearchTerm("")} />
+            ) : (
+              <Search size={16} className="absolute right-3 top-3 text-gray-400" />
+            )}
+          </div>
+        </div>
       </div>
 
-      {/* Loader */}
-      {loading && (
-        <div className="text-center py-10">
-          <div className="animate-spin h-10 w-10 border-b-2 border-blue-600 mx-auto rounded-full"></div>
-        </div>
-      )}
-
-      {/* Empty State */}
-      {!loading && assignedBookings.length === 0 && (
-        <div className="bg-white p-10 rounded-xl text-center shadow border">
-          <p className="text-gray-600 text-lg">No assigned appointments.</p>
-        </div>
-      )}
-
-      {/* Table */}
-      {!loading && assignedBookings.length > 0 && (
-        <div className="bg-white rounded-lg shadow overflow-hidden">
-          <table className="min-w-full divide-y divide-gray-300">
-            <thead className="bg-gray-50">
+      {/* Table Section */}
+      {!loading && filteredBookings.length > 0 ? (
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+          <table className="min-w-full divide-y divide-gray-100">
+            <thead className="bg-slate-50/50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase text-gray-600">
-                  Patient
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase text-gray-600">
-                  Phone
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase text-gray-600">
-                  Booking Date
-                </th>
-                <th className="px-6 py-3 text-center text-xs font-medium uppercase text-gray-600">
-                  Action
-                </th>
+                <th className="px-6 py-4 text-left text-xs font-bold uppercase text-gray-400">Patient</th>
+                <th className="px-6 py-4 text-left text-xs font-bold uppercase text-gray-400">Phone</th>
+                <th className="px-6 py-4 text-left text-xs font-bold uppercase text-gray-400">Booking Date</th>
+                <th className="px-6 py-4 text-center text-xs font-bold uppercase text-gray-400">Action</th>
               </tr>
             </thead>
-
-            <tbody className="bg-white divide-y divide-gray-200">
-              {assignedBookings.map((book) => (
-                <tr key={book._id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 font-semibold">{book.name}</td>
-                  <td className="px-6 py-4">{book.phone}</td>
-                  <td className="px-6 py-4">{formatDate(book.bookingDate)}</td>
-
-                  {/* ACTION BUTTON */}
+            <tbody className="divide-y divide-gray-50 text-sm">
+              {filteredBookings.map((book) => (
+                <tr key={book._id} className="hover:bg-gray-50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-800">{book.name}</td>
+                  <td className="px-6 py-4 text-gray-600">{book.phone}</td>
+                  <td className="px-6 py-4 text-gray-600">{formatDate(book.bookingDate)}</td>
                   <td className="px-6 py-4 text-center">
                     <button
                       onClick={() => handleOpenModal(book)}
-                      className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold"
+                      className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-md transition-all active:scale-95"
                     >
                       View Details
                     </button>
@@ -118,54 +160,80 @@ const Notifications = () => {
             </tbody>
           </table>
         </div>
+      ) : (
+        !loading && (
+          <div className="bg-white p-20 text-center rounded-2xl border border-gray-100 shadow-sm">
+            <p className="text-gray-400 text-lg">No appointments match your criteria.</p>
+          </div>
+        )
       )}
 
-      {/* Details Modal */}
+      {/* --- MODAL (Logic Remains Identical) --- */}
       {modalOpen && selectedBooking && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-xl shadow-xl max-w-lg w-full p-6">
-
-            {/* Header */}
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
-              Appointment Details
-            </h3>
-
-            {/* Patient Details */}
-            <div className="space-y-3">
-              <p><b>Name:</b> {selectedBooking.name}</p>
-              <p><b>Phone:</b> {selectedBooking.phone}</p>
-              <p><b>Booking Date:</b> {formatDate(selectedBooking.bookingDate)}</p>
-              <p><b>Location:</b> {selectedBooking.location || "Not Provided"}</p>
-              <p><b>Message:</b> {selectedBooking.message || "No message"}</p>
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-[2px] flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-xl shadow-xl max-w-sm w-full overflow-hidden border border-gray-100 animate-in zoom-in-95 duration-200">
+            <div className="px-6 pt-6 pb-2 flex items-center justify-between">
+              <h3 className="text-lg font-bold text-slate-800">Appointment Details</h3>
+              <button onClick={handleCloseModal} className="text-slate-400 hover:text-slate-600">
+                <X size={18} />
+              </button>
             </div>
 
-            {/* Buttons */}
-            <div className="flex justify-end gap-3 mt-6">
-              <button
-                onClick={handleCloseModal}
-                className="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg"
-              >
-                Close
-              </button>
+            <div className="px-6 py-2">
+              <hr className="mb-4 border-gray-100" />
+              <div className="flex items-center gap-3 mb-5">
+                <div className="bg-indigo-600 p-2 rounded-lg flex-shrink-0">
+                  <User size={20} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-[9px] font-bold text-indigo-500 uppercase tracking-wider">Client Profile</p>
+                  <h3 className="text-md font-bold text-slate-900">{selectedBooking.name}</h3>
+                </div>
+              </div>
 
-              <button
-                onClick={() => handleReject(selectedBooking._id)}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg"
-              >
-                Reject
-              </button>
+              <div className="space-y-3 mb-5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-slate-400">
+                    <Phone size={14} />
+                    <span className="text-xs font-semibold">Phone</span>
+                  </div>
+                  <p className="text-xs font-bold text-slate-700">{selectedBooking.phone}</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-slate-400">
+                    <Calendar size={14} />
+                    <span className="text-xs font-semibold">Booking Date</span>
+                  </div>
+                  <p className="text-xs font-bold text-slate-700">{formatDate(selectedBooking.bookingDate)}</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-slate-400">
+                    <MapPin size={14} />
+                    <span className="text-xs font-semibold">Location</span>
+                  </div>
+                  <p className="text-xs font-bold text-slate-700">{selectedBooking.location || "N/A"}</p>
+                </div>
+              </div>
 
-              <button
-                onClick={() => handleAccept(selectedBooking._id)}
-                className="px-4 py-2 bg-emerald-600 text-white rounded-lg"
-              >
-                Accept
-              </button>
+              <div className="bg-slate-50 rounded-lg p-3 border border-slate-100 mb-2">
+                <div className="flex items-center gap-1.5 mb-1 text-indigo-500">
+                  <MessageCircle size={12} />
+                  <p className="text-[9px] font-black uppercase tracking-widest">Message</p>
+                </div>
+                <p className="text-xs text-slate-600 italic line-clamp-2">
+                  "{selectedBooking.message || "No message."}"
+                </p>
+              </div>
+            </div>
+
+            <div className="px-6 py-4 bg-gray-50/50 flex items-center justify-between gap-2 mt-2">
+              <button onClick={handleCloseModal} className="px-3 py-1.5 text-xs font-bold text-gray-500">Close</button>
+              <button onClick={() => handleReject(selectedBooking._id)} className="px-4 py-2 bg-red-600 text-white text-xs font-bold rounded-lg transition-colors">Reject</button>
+              <button onClick={() => handleAccept(selectedBooking._id)} className="px-5 py-2 bg-emerald-600 text-white text-xs font-bold rounded-lg transition-all active:scale-95">Accept</button>
             </div>
           </div>
         </div>
       )}
-
     </div>
   );
 };
