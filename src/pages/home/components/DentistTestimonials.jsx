@@ -7,65 +7,65 @@ const DentistTestimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
-      rating: 5,
+      name: "Sara Joshi",
+      image: "https://content.jdmagicbox.com/v2/comp/mumbai/l7/022pxx22.xx22.170124215510.d3l7/catalogue/dr-charmi-mehta-smile-n-shine-kandivali-west-mumbai-dentists-4d7e4pf-250.jpg",
+      rating: 4,
       text: "Dr. Smith and his team are absolutely wonderful! They made my dental implant procedure completely painless and stress-free.",
       treatment: "Dental Implants"
     },
     {
       id: 2,
-      name: "Michael Chen",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
+      name: "Komal Pandey",
+      image: "https://www.newdelhidentistindia.com/images/india-testimonials/ind6.jpg",
       rating: 5,
       text: "Best dental experience I've ever had! The staff is friendly, professional, and the clinic is spotlessly clean.",
       treatment: "Regular Checkup"
     },
     {
       id: 3,
-      name: "Emily Davis",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
-      rating: 5,
-      text: "I was terrified of getting braces, but they made the whole process so comfortable. My smile has never looked better!",
-      treatment: "Orthodontics"
+      name: "Pooja Kaushal",
+      image: "https://www.indiadens.com/images/feedback/charu-dhawan.jpg",
+      rating: 4,
+      text: "Mujhe braces se bahut dar lagta tha, par inhone sab kuch itna comfortable bana diya. Meri smile pehle se bahut zyada achi ho gayi hai! Highly recommended.Thank you so much doctor",
+      treatment: "Orthodontics(Braces)"
     },
     {
       id: 4,
-      name: "James Wilson",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
-      rating: 5,
-      text: "Professional, caring, and efficient. They transformed my smile with veneers and I couldn't be happier with the results.",
-      treatment: "Cosmetic Dentistry"
+      name: "Susheela Thakre",
+      image: "https://www.indiadens.com/images/feedback/Bharti-Kumar-min.jpg",
+      rating: 3,
+      text: "Pehle bahut pain tha, par treatment ke baad ab sab perfect hai. Doctor bahut gentle aur caring hain.",
+      treatment: "Root Canal"
     },
     {
       id: 5,
-      name: "Lisa Anderson",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop",
-      rating: 5,
+      name: "Rutuja Gupte",
+      image: "https://bni-india.in/web/open/appsCmsImageDownload?imageObjectId=66e98443e4b05c582e62e249",
+      rating: 4,
       text: "The teeth whitening service here is amazing! Quick, painless, and the results are incredible. Highly recommend!",
       treatment: "Teeth Whitening"
     },
     {
       id: 6,
-      name: "Robert Taylor",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop",
+      name: "Shekhar Lilhore",
+      image: "https://asiancancerinstitute.com/wp-content/uploads/2024/08/Dr.Anurag-Mahale.jpg",
       rating: 5,
-      text: "After years of dental anxiety, I finally found a dentist I trust. They're patient, gentle, and truly care about their patients.",
+      text: "Saalon ki dental anxiety ke baad, finally mujhe ek aisa dentist mila jis par main trust kar sakta hoon. Wo bahut kind aur gentle hain, and sach mein apne patients ki care karte hain. Best experience ever! 👍",
       treatment: "Root Canal"
     },
     {
       id: 7,
-      name: "Amanda Martinez",
-      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop",
-      rating: 5,
+      name: "Anand Sharma",
+      image: "https://www.indiadens.com/images/feedback/sumit-dubey.jpg",
+      rating: 4,
       text: "Excellent service from start to finish. The emergency dental care I received was prompt and professional.",
       treatment: "Emergency Care"
     },
     {
       id: 8,
-      name: "David Brown",
-      image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150&h=150&fit=crop",
-      rating: 5,
+      name: "Damodar Soni",
+      image: "https://www.newdelhidentistindia.com/images/india-testimonials/ind5.jpg",
+      rating: 4,
       text: "My kids actually look forward to their dental appointments now! The pediatric team is fantastic with children.",
       treatment: "Pediatric Dentistry"
     }
@@ -171,7 +171,7 @@ const DentistTestimonials = () => {
         {/* <button className="bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl">
           Book Your Appointment Today
         </button> */}
-        <CartoonButton label="Book Your Appointment Today" to="/appointment" className='py-3 px-6 rounded-lg bg-primary font-medium text-white text-lg' />
+        <CartoonButton label="Book Your Appointment Today" to="/book-appointment" className='py-3 px-6 rounded-lg bg-primary font-medium text-white text-lg' />
       </div>
     </div>
   );
