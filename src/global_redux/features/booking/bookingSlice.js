@@ -6,7 +6,10 @@ import {
   assignClinicToBooking, 
   getPendingBookings,
   getAssignedBookings,
-  getCompletedBookings
+  getCompletedBookings,
+  // 1. Import the new dashboard thunks
+  getAdminDashboardStats,
+  getClinicDashboardStats
 } from "./bookingThunk";
 
 const bookingSlice = createSlice({
@@ -23,10 +26,13 @@ const bookingSlice = createSlice({
     availableLoading: false,
     completedBookings: [],
     completedLoading: false,
+    // 2. New state fields for dynamic dashboard stats
+    stats: null, 
+    statsLoading: false,
   },
 
   reducers: {
-    resetBookingSucess: (state) =>{
+    resetBookingSucess: (state) => {
       state.success = false;
     },
   },
@@ -42,7 +48,7 @@ const bookingSlice = createSlice({
       .addCase(createBooking.fulfilled, (state, action) => {
         state.loading = false;
         state.booking = action.payload;
-        state.success= true;
+        state.success = true;
       })
       .addCase(createBooking.rejected, (state, action) => {
         state.loading = false;
@@ -85,7 +91,6 @@ const bookingSlice = createSlice({
       })
       .addCase(getAssignedBookings.fulfilled, (state, action) => {
         state.loading = false;
-        // Handle both formats: direct array or { data: [...] }
         state.assignedBookings = Array.isArray(action.payload) 
           ? action.payload 
           : action.payload?.data || [];
@@ -111,38 +116,28 @@ const bookingSlice = createSlice({
         state.availableClinics = [];
       })
 
-      // ========== ASSIGN CLINIC TO BOOKING ========== 🔥 FIXED
+      // ========== ASSIGN CLINIC TO BOOKING ==========
       .addCase(assignClinicToBooking.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(assignClinicToBooking.fulfilled, (state, action) => {
         state.loading = false;
-        
-        // 🔥 FIX: Extract the actual booking data from the response
         const updated = action.payload?.data || action.payload;
 
-        // Only proceed if we have valid booking data with an _id
         if (updated && updated._id) {
-          // Remove from pending
           state.pendingBookings = state.pendingBookings.filter(
             (b) => b._id !== updated._id
           );
-
-          // Update in all bookings
           state.bookings = state.bookings.map((b) =>
             b._id === updated._id ? updated : b
           );
-
-          // 🔥 Add to assigned bookings (only if not already there)
           const existsInAssigned = state.assignedBookings.some(
             (b) => b._id === updated._id
           );
-          
           if (!existsInAssigned) {
             state.assignedBookings.push(updated);
           } else {
-            // Update existing entry
             state.assignedBookings = state.assignedBookings.map((b) =>
               b._id === updated._id ? updated : b
             );
@@ -165,9 +160,64 @@ const bookingSlice = createSlice({
       .addCase(getCompletedBookings.rejected, (state, action) => {
         state.completedLoading = false;
         state.error = action.payload;
+      })
+
+      // ========== 3. NEW: GET ADMIN DASHBOARD STATS ==========
+      .addCase(getAdminDashboardStats.pending, (state) => {
+        state.statsLoading = true;
+      })
+   // Inside bookingSlice.js -> extraReducers
+
+.addCase(getAdminDashboardStats.fulfilled, (state, action) => {
+  state.statsLoading = false;
+  
+  const rawData = action.payload;
+
+  // Map the backend response keys to your frontend state keys
+  state.stats = {
+    todayPending: rawData.TodayPending, // Note the capital 'T' from your JSON
+    totalCompleted: rawData.completed,
+    totalPending: rawData.pending,
+    totalAssigned: rawData.assigned
+  };
+})
+      .addCase(getAdminDashboardStats.rejected, (state, action) => {
+        state.statsLoading = false;
+        state.error = action.payload;
+      })
+
+      // ========== 4. NEW: GET CLINIC DASHBOARD STATS ==========
+      .addCase(getClinicDashboardStats.pending, (state) => {
+        state.statsLoading = true;
+      })
+  // Inside bookingSlice.js -> extraReducers
+
+.addCase(getClinicDashboardStats.fulfilled, (state, action) => {
+  state.statsLoading = false;
+  
+  // The data variable now holds your Postman response
+  const data = action.payload; 
+
+  state.stats = {
+    // Map backend "todayAssigned" to frontend "todayAssigned"
+    todayAssigned: data.todayAssigned || 0,
+    
+    // Map backend "acceptedCount" to frontend "totalAccepted"
+    totalAccepted: data.acceptedCount || 0,
+    
+    // Map backend "assigned" to frontend "totalAssigned"
+    totalAssigned: data.assigned || 0,
+    
+    // We will use "completedCount" or "completedAmount" to determine status
+    hasData: data.success 
+  };
+})
+      .addCase(getClinicDashboardStats.rejected, (state, action) => {
+        state.statsLoading = false;
+        state.error = action.payload;
       });
   },
 });
 
-export const {resetBookingSucess} = bookingSlice.actions;
+export const { resetBookingSucess } = bookingSlice.actions;
 export default bookingSlice.reducer;

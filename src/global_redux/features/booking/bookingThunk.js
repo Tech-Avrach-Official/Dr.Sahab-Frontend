@@ -3,6 +3,39 @@ import api from "../../../api/axiosBase";
 import toast from "react-hot-toast";
 // import { toast } from "react-toastify";
 
+// Admin Dashboard Stats - Get /dashboard/appointmentCount 
+export const getAdminDashboardStats = createAsyncThunk(
+  "booking/getAdminStats",
+  async (_, { rejectWithValue }) => {
+    try {
+      // Use the exact URL that worked in Postman
+      const res = await api.get("/dashboard/appointmentCount"); 
+      return res.data; 
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || "Error");
+    }
+  }
+);
+
+export const getClinicDashboardStats = createAsyncThunk(
+  "booking/getClinicStats",
+  async (_, { rejectWithValue }) => {
+    try {
+      // Ensure this matches the successful pattern from your Postman test
+      const res = await api.get("/clinic-booking/today-status-count"); 
+      
+      // Log this to your browser console to see exactly what is coming back
+      console.log("Clinic API Raw Response:", res.data); 
+      
+      return res.data; 
+    } catch (error) {
+      const errMsg = error.response?.data?.message || "Failed to load clinic stats!";
+      toast.error(errMsg);
+      return rejectWithValue(errMsg);
+    }
+  }
+);
+
 export const createBooking = createAsyncThunk(
   "booking/createBooking",
   async ({ name, phone, dob, bookingDate, message, location }, { rejectWithValue }) => {
@@ -90,9 +123,6 @@ export const getCompletedBookings = createAsyncThunk(
   }
 );
 
-
-
-// Add these to your existing bookingThunk.js file
 
 // Get Available Clinics (clinics not on off-day today)
 export const getAvailableClinics = createAsyncThunk(

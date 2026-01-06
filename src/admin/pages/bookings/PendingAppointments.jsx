@@ -255,18 +255,18 @@ const PendingAppointments = () => {
       {showAssignModal && selectedBooking && (
         <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-[2rem] max-w-md w-full shadow-2xl overflow-hidden border border-white/20">
-            <div className="bg-gradient-to-br from-indigo-600 to-blue-700 px-8 py-7 text-white relative">
+            <div className="bg-indigo-400  px-8 py-7 text-white relative">
               <h3 className="text-2xl font-bold">Assign Clinic</h3>
-              <p className="text-blue-100/80 text-sm mt-1">Select a facility for {selectedBooking.name}</p>
-              <button onClick={() => setShowAssignModal(false)} className="absolute top-7 right-7 p-1 hover:bg-white/20 rounded-full transition-colors">
+              {/* <p className="text-gray text-sm mt-1">Select a facility for {selectedBooking.name}</p> */}
+              {/* <button onClick={() => setShowAssignModal(false)} className="absolute top-7 right-7 p-1 hover:bg-white/20 rounded-full transition-colors">
                 <X size={22} />
-              </button>
+              </button> */}
             </div>
-            <div className="p-8 space-y-6">
-              <div className="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+            <div className="p-2 space-y-6">
+              <div className=" rounded-2xl p-4  ">
                 <div className="flex items-center gap-3 mb-2">
-                  <User size={18} className="text-blue-600" />
-                  <span className="font-bold text-gray-800">{selectedBooking.name}</span>
+                  <User size={18} className="text-gray-600" />
+                  <span className="font-bold text-gray-700">{selectedBooking.name}</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-gray-500">
                   <MapPin size={16} />
@@ -286,7 +286,7 @@ const PendingAppointments = () => {
                   <select
                     value={selectedClinic}
                     onChange={(e) => setSelectedClinic(e.target.value)}
-                    className="w-full bg-white border border-gray-200 p-4 rounded-2xl text-sm focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer font-medium shadow-sm"
+                    className="w-full bg-white border border-gray-200 p-4 rounded-2xl text-sm focus:ring-1 focus:ring-gray-500 outline-none appearance-none cursor-pointer font-medium shadow-sm"
                   >
                     <option value="">-- Choose a Clinic --</option>
                     {availableClinics?.length > 0 ? (
@@ -302,9 +302,9 @@ const PendingAppointments = () => {
                 )}
               </div>
             </div>
-            <div className="px-8 py-6 bg-gray-50 border-t flex gap-3 justify-end">
+            <div className="px-8 py-6 bg-gray-50 border-t flex gap-3 justify-around">
               <button onClick={() => setShowAssignModal(false)} className="px-6 py-2.5 text-gray-500 font-bold text-sm hover:text-gray-800 transition-colors">Cancel</button>
-              <button onClick={handleAssignSubmit} disabled={!selectedClinic} className="px-10 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 font-bold text-sm shadow-lg shadow-blue-200 disabled:opacity-50 active:scale-95 transition-all">Confirm Assignment</button>
+              <button onClick={handleAssignSubmit} disabled={!selectedClinic} className="px-5 py-2 bg-blue-700 text-white rounded-xl hover:bg-blue-900 font-bold text-sm  disabled:opacity-50 active:scale-95 transition-all">Confirm Assignment</button>
             </div>
           </div>
         </div>
