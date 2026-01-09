@@ -179,14 +179,16 @@ const ServiceDetail = () => {
 
                     <div className="flex gap-2">
                       <div className="bg-white/90 backdrop-blur-sm p-3 rounded-full mb-3">
-                        <Phone className="w-7 h-7 text-green-600" />
+                        <Phone className="w-6 h-6 text-green-600" />
                       </div>
 
                       <div>
                         <h4 className="text-lg font-semibold text-white">
                           Contact Us
                         </h4>
-                        <p className="text-gray-200 text-sm">+1 234 567 890</p>
+                        <p className="text-gray-200 text-md"> <a href="tel:+917275901611"
+                className="hover:text-white">
+                   +91 7275901611"</a></p>
                       </div>
                     </div>
                   </div>

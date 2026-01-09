@@ -50,20 +50,23 @@ const ContactPage = () => {
     {
       icon: MapPin,
       title: "Visit Us",
-      info: "123 Dental Street, Medical Plaza",
-      subInfo: "New York, NY 10001",
+      info: "Clement Town,Lane no.1 Post Office Road",
+      subInfo: "Indore, IN 452001 ",
+      link:"https://www.google.com/maps/search/?api=1&query=Clement+Town+Lane+no.1+Post+Office+Road+Indore+452001"
     },
     {
       icon: Phone,
       title: "Call Us",
-      info: "(+0) 789-345-601",
+      info: "(+91)-72759 01611",
       subInfo: "Mon-Sat: 9AM to 9PM",
+      link:"tel:+917275901611"
     },
     {
       icon: Mail,
       title: "Email Us",
-      info: "domain@gmail.com",
+      info: "Service@doctorsaab.com",
       subInfo: "We reply within 24 hours",
+      link:"https://mail.google.com/mail/?view=cm&fs=1&to=Service@doctorsaab.com"
     },
     {
       icon: Clock,
@@ -100,31 +103,43 @@ const ContactPage = () => {
             </motion.div>
           </div>
         </div>
+<div className="container mx-auto px-6 max-w-7xl -mt-12 mb-16">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    {contactInfo.map((item, index) => {
+      const Icon = item.icon;
+      const isLink = !!item.link;
 
-        {/* Contact Info Cards */}
-        <div className="container mx-auto px-6 max-w-7xl -mt-12 mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactInfo.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                >
-                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                    <Icon className="w-7 h-7 text-primary" strokeWidth={2} />
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-700 font-medium">{item.info}</p>
-                  <p className="text-gray-500 text-sm mt-1">{item.subInfo}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
+      return (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1, duration: 0.5 }}
+          className={`bg-white rounded-2xl p-6 shadow-lg transition-all duration-300 
+            ${isLink ? 'hover:shadow-xl hover:-translate-y-1 cursor-pointer group' : ''}`}
+        >
+          {/* contact Information */}
+          <a 
+            href={item.link || '#'} 
+            onClick={(e) => !item.link && e.preventDefault()}
+            target={item.link?.startsWith('http') ? '_blank' : undefined}
+            rel="noopener noreferrer"
+            className={!isLink ? "cursor-default" : ""}
+          >
+            <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+              <Icon className="w-7 h-7 text-blue-800 " strokeWidth={2} />
+            </div>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+            <p className={`text-gray-700 font-medium ${isLink ? 'group-hover:text-blue-900 transition-colors' : ''}`}>
+              {item.info}
+            </p>
+            <p className="text-gray-500 text-sm mt-1">{item.subInfo}</p>
+          </a>
+        </motion.div>
+      );
+    })}
+  </div>
+</div>
 
         {/* Main Contact Section */}
         <div className="container mx-auto px-6 max-w-7xl pb-20">

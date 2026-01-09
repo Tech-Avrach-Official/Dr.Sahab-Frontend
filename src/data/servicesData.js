@@ -180,9 +180,17 @@ export const servicesData = {
     title: "Cosmetic & Laser Dental Treatment",
     image: "https://www.stavyadental.com/blog/wp-content/uploads/2019/05/720-X-320-2.jpg",
     description: [
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis maxime aperiam eaque commodi, ipsum ut temporibus nesciunt dolorum sint mollitia eos suscipit esse, aliquam tempora neque fugit quas quaerat? Ullam, ipsam voluptas voluptatum minima illo, omnis error minus totam quam cumque consequatur? Quod quas ab commodi veritatis consequuntur unde temporibus corporis ullam, harum fuga laudantium odio perspiciatis libero illum consequatur iure repellendus voluptatibus nobis tenetur culpa at ipsum reprehenderit provident? Sapiente autem fugit sit quis dolorum consequuntur iure repellendus odit. Sit corporis delectus, iste voluptate dolorem numquam? Distinctio unde suscipit natus debitis hic quos minus, accusantium molestias esse modi. Quod..",
-      "Laser dentistry ensures pain-free, fast healing treatments."
-    ]
+     "Precision Care for a Flawless, Pain-Free Smile",
+
+"At our clinic, we combine the artistry of cosmetic dentistry with the precision of cutting-edge laser technology. Laser dentistry has revolutionized how we approach aesthetic enhancements, offering a faster, more comfortable, and highly accurate alternative to traditional dental tools. Whether you are looking to brighten your smile or reshape your gum line, our laser-assisted treatments ensure a drill-free experience with superior results.",
+  
+"Benefits for the Modern Patient",
+"1.  No Dental Anxiety: No loud drills, no vibrations, and significantly fewer needles make for a relaxing visit.",
+
+"2.  Reduced Infection Risk: The high-energy light beam sterilizes the treatment area as it works, virtually eliminating the risk of post-operative infection.",
+
+"3.  Preservation of Health: Because lasers are so precise, we can target specific imperfections while leaving the surrounding healthy tissue completely untouched.",
+]
   },
   "dental-veneers-laminates": {
     title: "Dental Veneers and Laminates",

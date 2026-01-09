@@ -167,7 +167,7 @@ const CompletedAppointments = () => {
                     <td className="px-6 py-4 text-sm text-gray-600 font-medium">{booking.phone}</td>
                     <td className="px-6 py-4 text-sm text-gray-600">
                       <div className="flex items-center gap-1">
-                        <Clock size={14} className="text-blue-400" />
+                       
                         {formatDate(booking.bookingDate)}
                       </div>
                     </td>
@@ -177,14 +177,14 @@ const CompletedAppointments = () => {
                       </span>
                     </td>
                     <td className="px-6 py-4 text-center">
-                      <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider">
+                      <span className="bg-blue-50 text-blue-900 px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider">
                         {booking.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-right">
+                    <td className="px-4 py-4 text-right">
                       <button
                         onClick={() => handleViewClinic(booking.clinicId)}
-                        className="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-bold transition-all shadow-sm active:scale-95"
+                        className="px-6 py-2 bg-blue-600 text-white rounded-lg text-xs font-bold hover:bg-blue-900 transition-all shadow-sm active:scale-95"
                       >
                         View Clinic
                       </button>
@@ -232,16 +232,16 @@ const CompletedAppointments = () => {
 
       {/* MODAL Remains the same with improved transitions */}
       {modalOpen && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-md flex items-center justify-center p-4 z-50">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-lg flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-3xl max-w-md w-full shadow-2xl overflow-hidden border border-white/20 animate-in fade-in zoom-in duration-200">
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-700 px-8 py-6 text-white relative">
+            <div className="bg-blue-600 px-8 py-6 text-white relative">
               <h3 className="text-2xl font-bold">Clinic Details</h3>
               <p className="text-blue-100 text-sm opacity-80">Information about the assigned facility</p>
-              <button onClick={closeModal} className="absolute top-6 right-6 hover:rotate-90 transition-transform">
+              <button onClick={closeModal} className="absolute top-6 right-6 ">
                 <X size={24} />
               </button>
             </div>
-            <div className="p-8">
+            <div className="p-4 bg-gray-100 border border-gray-500 border-transparent rounded-2xl m-2">
               {!currentClinic ? (
                 <div className="flex flex-col items-center py-10">
                   <div className="animate-spin h-10 w-10 border-4 border-blue-600 border-t-transparent rounded-full mb-4"></div>
@@ -255,7 +255,7 @@ const CompletedAppointments = () => {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Clinic Name</p>
-                      <p className="text-lg font-bold text-gray-800">{currentClinic.clinic_name}</p>
+                      <p className="text-md font-semibold text-gray-700">{currentClinic.clinic_name}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -264,16 +264,16 @@ const CompletedAppointments = () => {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Lead Dentist</p>
-                      <p className="text-lg font-semibold text-gray-800">{currentClinic.dentist_name}</p>
+                      <p className="text-lg font-semibold text-gray-700">{currentClinic.dentist_name}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="p-3 bg-emerald-50 rounded-xl text-emerald-600">
                       <Phone size={20} />
-                    </div>
+                    </div> 
                     <div>
                       <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Contact Number</p>
-                      <p className="text-lg font-semibold text-gray-800">{currentClinic.number}</p>
+                      <p className="text-md font-semibold text-gray-800">{currentClinic.number}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -282,14 +282,14 @@ const CompletedAppointments = () => {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-gray-400 uppercase tracking-widest"> Address</p>
-                      <p className="text-sm leading-relaxed text-gray-600">{currentClinic.address}, {currentClinic.location}</p>
+                      <p className="text-md leading-relaxed font-semibold text-gray-700">{currentClinic.address}, {currentClinic.location}</p>
                     </div>
                   </div>
                 </div>
               )}
             </div>
-            <div className="px-8 py-6 bg-gray-50 border-t border-gray-100 flex justify-end">
-              <button onClick={closeModal} className="px-8 py-2.5 bg-gray-900 text-white rounded-xl hover:bg-black font-bold text-sm shadow-lg transition-all active:scale-95">Done</button>
+            <div className="px-8 py-4 bg-gray-50 border-t border-gray-100 flex justify-center mt-4 rounded-xl">
+              <button onClick={closeModal} className="px-12 py-2.5 bg-gray-500 text-white border border-gray-300 rounded-2xl hover:bg-gray-600 font-bold text-md shadow-lg transition-all active:scale-95">Done</button>
             </div>
           </div>
         </div>

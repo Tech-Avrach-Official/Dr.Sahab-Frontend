@@ -172,7 +172,7 @@ const AssignedAppointments = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 font-medium">{booking.phone}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                       <div className="flex items-center gap-1">
-                        <Clock size={14} className="text-blue-400" />
+
                         {formatDate(booking.bookingDate)}
                       </div>
                     </td>
@@ -182,14 +182,14 @@ const AssignedAppointments = () => {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-center">
-                      <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-[11px] font-bold uppercase tracking-wider">
+                      <span className="px-3 py-1 bg-blue-50 text-blue-800 rounded-full text-[11px] font-bold uppercase tracking-wider">
                         {booking.status}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right">
                       <button
                         onClick={() => handleViewClinic(booking.clinicId)}
-                        className="px-4 py-2 bg-white border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white text-xs font-bold transition-all shadow-sm active:scale-95"
+                        className="px-4 py-2 bg-blue-600 border border-blue-60 text-white rounded-lg hover:bg-blue-800 text-xs font-bold transition-all shadow-sm active:scale-95"
                       >
                         View Details
                       </button>
@@ -235,64 +235,64 @@ const AssignedAppointments = () => {
         )
       )}
 
-      {/* ADVANCED CLINIC MODAL */}
+      {/*  CLINIC MODAL */}
       {modalOpen && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-[2rem] max-w-md w-full shadow-2xl overflow-hidden border border-white/20 animate-in fade-in zoom-in duration-200">
-            <div className="bg-gradient-to-br from-blue-600 to-blue-800 px-8 py-7 text-white relative">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-lg flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-[1rem] max-w-md w-full shadow-xl overflow-hidden border border-white/20 animate-in fade-in zoom-in duration-200">
+            <div className="bg-indigo-600 px-8 py-4 text-white relative">
               <h3 className="text-2xl font-bold tracking-tight">Clinic Details</h3>
-              <p className="text-blue-100/80 text-sm mt-1">Assigned facility information</p>
+              <p className="text-blue-100/80 text-sm mt-1">Assigned Clinic Information</p>
               <button onClick={closeModal} className="absolute top-7 right-7 p-1 hover:bg-white/20 rounded-full transition-colors">
                 <X size={22} />
               </button>
             </div>
 
-            <div className="p-8 space-y-6">
+            <div className="p-4 space-y-6 m-2 border border-gray-500 border-transparent rounded-2xl bg-gray-100 shadow-md">
               {!currentClinic ? (
-                <div className="flex flex-col items-center py-10">
+                <div className="flex flex-col items-center py-9 ">
                   <div className="animate-spin h-10 w-10 border-4 border-blue-600 border-t-transparent rounded-full mb-4"></div>
                   <p className="text-gray-500 font-medium">Fetching clinic info...</p>
                 </div>
               ) : (
                 <>
-                  <div className="flex items-start gap-4 group">
-                    <div className="p-3.5 bg-blue-50 rounded-2xl text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                      <Building2 size={22} />
+                  <div className="flex items-start gap-4">
+                    <div className="p-3.5 bg-blue-50 rounded-2xl text-blue-600 ">
+                      <Building2 size={20} />
                     </div>
                     <div>
                       <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Clinic Name</p>
-                      <p className="text-lg font-bold text-gray-800 leading-tight">{currentClinic.clinic_name}</p>
+                      <p className="text-md font-semibold text-gray-700 leading-tight">{currentClinic.clinic_name}</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4 group">
-                    <div className="p-3.5 bg-indigo-50 rounded-2xl text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300">
-                      <User size={22} />
+                    <div className="p-3.5 bg-indigo-50 rounded-2xl text-indigo-800 ">
+                      <User size={20} />
                     </div>
                     <div>
                       <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Assigned Dentist</p>
-                      <p className="text-lg font-semibold text-gray-800 leading-tight">{currentClinic.dentist_name}</p>
+                      <p className="text-md font-semibold text-gray-700 leading-tight">{currentClinic.dentist_name}</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4 group">
-                    <div className="p-3.5 bg-emerald-50 rounded-2xl text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
-                      <Phone size={22} />
+                    <div className="p-3.5  bg-emerald-50 rounded-2xl text-emerald-600 ">
+                      <Phone size={20} />
                     </div>
                     <div>
                       <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Contact Number</p>
-                      <p className="text-lg font-semibold text-gray-800 leading-tight">{currentClinic.number}</p>
+                      <p className="text-md font-semibold text-gray-700 leading-tight">{currentClinic.number}</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4 group">
-                    <div className="p-3.5 bg-orange-50 rounded-2xl text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors duration-300">
-                      <MapPinned size={22} />
+                    <div className="p-3.5 bg-orange-50 rounded-2xl text-orange-600 ">
+                      <MapPinned size={20} />
                     </div>
                     <div>
                       <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]"> Address</p>
-                      <p className="text-sm leading-relaxed text-gray-600 font-medium">
-                        {currentClinic.address}, <span className="text-gray-900">{currentClinic.location}</span>
+                      <p className="text-md leading-relaxed text-gray-700 font-medium">
+                        {currentClinic.address}, <span className="text-gray-700">{currentClinic.location}</span>
                       </p>
                     </div>
                   </div>
@@ -300,10 +300,10 @@ const AssignedAppointments = () => {
               )}
             </div>
 
-            <div className="px-8 py-6 bg-gray-50 border-t border-gray-100 flex justify-end">
+            <div className="px-8 py-4 bg-gray-50 border-t border-gray-200 rounded-2xl flex justify-center">
               <button
                 onClick={closeModal}
-                className="px-10 py-3 bg-gray-900 text-white rounded-2xl hover:bg-black font-bold text-sm shadow-xl shadow-gray-200 transition-all active:scale-95"
+                className="px-8 py-3 bg-gray-300 border border-gray-300 text-gray rounded-xl hover:bg-gray-400 font-bold text-sm shadow-xl shadow-gray-200 transition-all active:scale-95"
               >
                 Close Details
               </button>

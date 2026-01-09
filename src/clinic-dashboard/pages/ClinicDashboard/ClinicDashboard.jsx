@@ -72,15 +72,16 @@ const ClinicDashboard = () => {
           </div>
         </div>
 
-        {/* Card 4: Clinic Status */}
+       {/* Card 4: Clinic Status (Mapped to Total Revenue) */}
         <div className="bg-white shadow rounded-xl p-5 flex items-center gap-4">
           <div className="p-3 bg-orange-100 rounded-lg">
             <Activity className="w-6 h-6 text-orange-600" />
           </div>
           <div>
-            <p className="text-gray-500 text-sm">Clinic Status</p>
+            <p className="text-gray-500 text-sm">Total Revenue</p>
             <h2 className="text-2xl font-bold">
-              {statsLoading ? "..." : stats ? "Open" : "Closed"}
+              {/* Aggregated total completed appointment amount  */}
+              ₹ {display(stats?.totalAmount)}
             </h2>
           </div>
         </div>

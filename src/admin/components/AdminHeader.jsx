@@ -32,11 +32,18 @@ const AdminHeader = () => {
 
               <div className="flex items-center gap-3 pl-4">
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
-                  AD
+                  D
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-900">Admin User</p>
-                  <p className="text-xs text-gray-500">admin@brand.com</p>
+                  <p className="text-sm font-semibold text-gray-900">Dr Mandloi</p>
+                  <a 
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=Service@doctorsaab.com" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="text-sm text-gray-600 hover:underline"
+>
+  Service@doctorsaab.com
+</a>
                 </div>
                 <ChevronDown className="w-4 h-4 text-gray-400" />
               </div>

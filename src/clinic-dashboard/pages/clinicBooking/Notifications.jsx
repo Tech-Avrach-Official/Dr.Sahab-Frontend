@@ -226,9 +226,9 @@ const Notifications = () => {
               </div>
             </div>
 
-            <div className="px-6 py-4 bg-gray-50/50 flex items-center justify-between gap-2 mt-2">
-              <button onClick={handleCloseModal} className="px-3 py-1.5 text-xs font-bold text-gray-500">Close</button>
-              <button onClick={() => handleReject(selectedBooking._id)} className="px-4 py-2 bg-red-600 text-white text-xs font-bold rounded-lg transition-colors">Reject</button>
+            <div className="px-3 py-4 bg-gray-50/50 flex items-center justify-between gap-2 mt-2">
+              <button onClick={handleCloseModal} className="px-3 py-1.5 text-xs font-bold text-gray-500 hover:text-black">Close</button>
+              <button onClick={() => handleReject(selectedBooking._id)} className="px-4 py-2 ml-28  bg-red-600 text-white text-xs font-bold rounded-lg transition-colors">Reject</button>
               <button onClick={() => handleAccept(selectedBooking._id)} className="px-5 py-2 bg-emerald-600 text-white text-xs font-bold rounded-lg transition-all active:scale-95">Accept</button>
             </div>
           </div>

@@ -6,7 +6,7 @@ import {
   assignClinicToBooking
 } from "../../../global_redux/features/booking/bookingThunk";
 import toast from "react-hot-toast";
-import { Search, X, MapPin, User, Clock, Filter } from "lucide-react";
+import { Search, X,MapPinned, SquareUserRound, Filter, } from "lucide-react";
 
 const PendingAppointments = () => {
   const dispatch = useDispatch();
@@ -190,7 +190,6 @@ const PendingAppointments = () => {
                     <td className="px-6 py-4 text-sm text-gray-600">{booking.phone}</td>
                     <td className="px-6 py-4 text-sm text-gray-600">
                       <div className="flex items-center gap-1">
-                        <Clock size={14} className="text-blue-400" />
                         {formatDate(booking.bookingDate)}
                       </div>
                     </td>
@@ -251,11 +250,11 @@ const PendingAppointments = () => {
         )
       )}
 
-      {/* MODAL Remains unchanged logic-wise */}
+      {/* MODAL */}
       {showAssignModal && selectedBooking && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-[2rem] max-w-md w-full shadow-2xl overflow-hidden border border-white/20">
-            <div className="bg-indigo-400  px-8 py-7 text-white relative">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-lg flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-[1rem] max-w-sm w-full shadow-xl overflow-hidden border border-white/20">
+            <div className="bg-indigo-600  px-8 py-7 text-white relative">
               <h3 className="text-2xl font-bold">Assign Clinic</h3>
               {/* <p className="text-gray text-sm mt-1">Select a facility for {selectedBooking.name}</p> */}
               {/* <button onClick={() => setShowAssignModal(false)} className="absolute top-7 right-7 p-1 hover:bg-white/20 rounded-full transition-colors">
@@ -265,16 +264,16 @@ const PendingAppointments = () => {
             <div className="p-2 space-y-6">
               <div className=" rounded-2xl p-4  ">
                 <div className="flex items-center gap-3 mb-2">
-                  <User size={18} className="text-gray-600" />
-                  <span className="font-bold text-gray-700">{selectedBooking.name}</span>
+                  <SquareUserRound size={19} className="text-blue-600" />
+                  <span className="font-semibold text-gray-600">{selectedBooking.name}</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-gray-500">
-                  <MapPin size={16} />
+                  <MapPinned size={17} className="text-blue-600"/>
                   <span>{selectedBooking.location}</span>
                 </div>
               </div>
               <div>
-                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2 ml-1">
+                <label className="text-[11px] font-bold text-gray-400 uppercase tracking-widest block mb-2 ml-3">
                   Available Clinics
                 </label>
                 {availableLoading ? (
@@ -286,13 +285,13 @@ const PendingAppointments = () => {
                   <select
                     value={selectedClinic}
                     onChange={(e) => setSelectedClinic(e.target.value)}
-                    className="w-full bg-white border border-gray-200 p-4 rounded-2xl text-sm focus:ring-1 focus:ring-gray-500 outline-none appearance-none cursor-pointer font-medium shadow-sm"
+                    className="w-full bg-white border border-gray-200 p-4 rounded-3xl text-m focus:ring-1 focus:ring-gray-300 outline-none appearance-none cursor-pointer font-medium shadow-sm"
                   >
                     <option value="">-- Choose a Clinic --</option>
                     {availableClinics?.length > 0 ? (
                       availableClinics.map((clinic) => (
-                        <option key={clinic._id} value={clinic._id}>
-                          🏥 {clinic.clinic_name} ({clinic.location})
+                        <option key={clinic._id} value={clinic._id}>   
+                      {clinic.clinic_name} ({clinic.location})
                         </option>
                       ))
                     ) : (
@@ -302,9 +301,9 @@ const PendingAppointments = () => {
                 )}
               </div>
             </div>
-            <div className="px-8 py-6 bg-gray-50 border-t flex gap-3 justify-around">
-              <button onClick={() => setShowAssignModal(false)} className="px-6 py-2.5 text-gray-500 font-bold text-sm hover:text-gray-800 transition-colors">Cancel</button>
-              <button onClick={handleAssignSubmit} disabled={!selectedClinic} className="px-5 py-2 bg-blue-700 text-white rounded-xl hover:bg-blue-900 font-bold text-sm  disabled:opacity-50 active:scale-95 transition-all">Confirm Assignment</button>
+            <div className="px-6 py-6 mt-6 bg-gray-50 border-t flex gap-10 justify-between">
+              <button onClick={() => setShowAssignModal(false)} className="px-6 py-2.5 text-gray-500 font-bold text-sm bg-gray-100 border border-gray-300 rounded-xl  hover:text-gray-800 hover:bg-gray-300 transition-colors">Cancel</button>
+              <button onClick={handleAssignSubmit} disabled={!selectedClinic} className="px-5 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-800 font-semibold text-sm  active:scale-95 transition-all">Confirm Assignment</button>
             </div>
           </div>
         </div>

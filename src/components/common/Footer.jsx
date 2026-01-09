@@ -102,9 +102,25 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <h3 className="text-xl font-semibold text-white mb-5">Contact Us</h3>
             <ul className="space-y-3 text-gray-300 text-base">
-              <li>📍 Indore, Madhya Pradesh</li>
-              <li>📞 +91 98765 43210</li>
-              <li>✉️ dentureclinic@gmail.com</li>
+              <li>
+
+                <a 
+                href="https://www.google.com/maps/search/?api=1&query=Indore,+Madhya+Pradesh"
+                target="_blank"
+                rel="noopener noreferrer"
+                 className="hover:text-white">
+                  📍 Indore, Madhya Pradesh</a></li>
+
+              <li>
+                <a href="tel:+917275901611"
+                className="hover:text-white">
+                  📞 +91 7275901611"</a></li>
+
+              <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=Service@doctorsaab.com"
+              target="_blank"
+              rel="noopener noreferrer" 
+              className="hover:text-white "><span>📩</span>
+              <span >Service@doctorsaab.com</span></a> </li>
             </ul>
           </div>
         </div>

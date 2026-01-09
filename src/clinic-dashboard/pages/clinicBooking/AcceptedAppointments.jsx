@@ -172,11 +172,11 @@ const AcceptedAppointments = () => {
 
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-gray-600 text-sm">
-                  <Phone size={16} className="text-emerald-600" /> {b.phone}
+                  <Phone size={16} className="text-indigo-500" /> {b.phone}
                 </div>
 
                 <div className="flex items-center gap-3 text-gray-600 text-sm">
-                  <Calendar size={16} className="text-emerald-600" />
+                  <Calendar size={16} className="text-indigo-500" />
                   {new Date(b.bookingDate).toLocaleDateString("en-IN", {
                     day: "2-digit",
                     month: "long",
@@ -186,24 +186,24 @@ const AcceptedAppointments = () => {
 
                 {b.location && (
                   <div className="flex items-center gap-3 text-gray-600 text-sm">
-                    <MapPin size={16} className="text-emerald-600" /> {b.location}
+                    <MapPin size={16} className="text-indigo-500" /> {b.location}
                   </div>
                 )}
 
                 {b.message && (
-                  <div className="flex items-start gap-3 text-gray-600 text-sm bg-gray-50 p-3 rounded-lg mt-2">
-                    <MessageCircle size={16} className="text-emerald-600 mt-0.5" /> 
-                    <p className="italic leading-relaxed">"{b.message}"</p>
+                  <div className="flex items-start gap-3 text-gray-600 text-sm bg-gray-100 p-2 rounded-md mt-2">
+                    <MessageCircle size={16} className="text-indigo-700 mt-0.5" /> 
+                    <p className="leading-relaxed">"{b.message}"</p>
                   </div>
                 )}
               </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-gray-50">
+            <div className="mt-6 pt-4  border-t border-gray-50">
               {b.status !== "complete" ? (
                 <button
                   onClick={() => openCompleteModal(b)}
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl flex items-center justify-center gap-2 font-semibold transition-colors"
+                  className="w-full bg-indigo-500 hover:bg-indigo-700 text-white py-2 rounded-l flex items-center justify-center gap-3 font-semibold transition-colors"
                 >
                   <CheckCircle size={18} />
                   Mark as Completed

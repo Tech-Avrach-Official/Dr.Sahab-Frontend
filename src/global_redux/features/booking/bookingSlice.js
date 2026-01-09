@@ -208,8 +208,7 @@ const bookingSlice = createSlice({
     // Map backend "assigned" to frontend "totalAssigned"
     totalAssigned: data.assigned || 0,
     
-    // We will use "completedCount" or "completedAmount" to determine status
-    hasData: data.success 
+  totalAmount: data.completedAmount || 0
   };
 })
       .addCase(getClinicDashboardStats.rejected, (state, action) => {
