@@ -184,7 +184,7 @@ const CompletedAppointments = () => {
                     <td className="px-4 py-4 text-right">
                       <button
                         onClick={() => handleViewClinic(booking.clinicId)}
-                        className="px-6 py-2 bg-blue-600 text-white rounded-lg text-xs font-bold hover:bg-blue-900 transition-all shadow-sm active:scale-95"
+                        className="px-5 py-3 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-900 transition-all shadow-sm active:scale-95"
                       >
                         View Clinic
                       </button>

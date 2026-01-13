@@ -6,7 +6,7 @@ import {
   Calendar,
   User,
   ClipboardList,
-  Activity,
+ ClipboardCheck,
 } from "lucide-react";
 import PendingAppointments from "../bookings/PendingAppointments";
 
@@ -76,12 +76,13 @@ const Dashboard = () => {
         {/* Card 4: Clinic Status (Mapped to Completed per documentation) */}
        <div className="bg-white shadow rounded-xl p-5 flex items-center gap-4">
   <div className="p-3 bg-orange-100 rounded-lg">
-    <Activity className="w-6 h-6 text-orange-600" />
+    <ClipboardCheck className="w-6 h-6 text-orange-600" />
   </div>
   <div>
-    <p className="text-gray-500 text-sm">Clinic Status</p>
+    <p className="text-gray-500 text-sm">Completed Appointments</p>
     <h2 className="text-2xl font-bold">
-      {statsLoading ? "..." : stats ? "Active" : "Offline"}
+      {display(stats?.totalCompleted)}
+      
     </h2>
   </div>
 </div>

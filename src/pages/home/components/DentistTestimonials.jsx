@@ -75,6 +75,8 @@ const DentistTestimonials = () => {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   const TestimonialCard = ({ testimonial }) => (
+   
+   
     <div className="flex-shrink-0 w-72 md:w-96 bg-white rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 mx-4">
       <div className="flex items-start justify-between mb-2 md:mb-4">
         <Quote className="w-10 h-10 text-blue-500 opacity-50" />
@@ -85,11 +87,11 @@ const DentistTestimonials = () => {
         </div>
       </div>
       
-      <p className="text-gray-700 text-sm md:text-base mb-2 md:mb-6 leading-relaxed">
+      <p className="text-gray-700 text-sm md:text-base  mb-2 md:mb-6 leading-relaxed">
         "{testimonial.text}"
       </p>
       
-      <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
+      <div className="flex items-center gap-4 pt-4 border-t border-gray-100 ">
         <img
           src={testimonial.image}
           alt={testimonial.name}
@@ -101,6 +103,7 @@ const DentistTestimonials = () => {
         </div>
       </div>
     </div>
+
   );
 
   return (
@@ -116,11 +119,11 @@ const DentistTestimonials = () => {
         </div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto overflow-hidden px-6 py-5">
+      <div className="relative max-w-7xl mx-auto overflow-hidden px-6 py-6">
         {/* First Row - Scrolling Left */}
         <div className="mb-8">
           <motion.div
-            className="flex"
+            className="flex items-stretch py-4"
             animate={{
               x: [0, -1020],
             }}

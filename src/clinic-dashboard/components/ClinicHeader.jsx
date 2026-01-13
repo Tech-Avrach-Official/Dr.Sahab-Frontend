@@ -1,11 +1,16 @@
 import { Bell, ChevronDown, Search } from 'lucide-react'
 import React from 'react'
+import { useSelector } from 'react-redux';
 // import logo from '@/assets/logo-red.png'
 
 const ClinicHeader = () => {
+  const {user} = useSelector((state) => state.auth);
+
+  const firstLetter = user?.clinic_name ? user.clinic_name.charAt(0).toUpperCase() : 'C';
   return (
      <header className="bg-white shadow-sm">
           <div className="flex items-center justify-between px-6 py-4">
+           
             {/* <button
               onClick={() => setSidebarOpen(true)}
               className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors mr-4"
@@ -31,22 +36,22 @@ const ClinicHeader = () => {
              
 
               <div className="flex items-center gap-3 pl-4">
-                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
-                  D
-                </div>
+                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold shadow-sm">
+              {firstLetter}
+            </div>
                 <div>
-<p className="text-sm font-semibold text-gray-900">Dr Mandloi</p>
+<p className="text-sm font-semibold text-gray-900">{ user?.clinic_name || "Clinic User"}</p>
 <a 
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=Service@doctorsaab.com" 
+  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${user?.clinic_email || ""}`}
   target="_blank" 
   rel="noopener noreferrer"
   className="text-sm text-gray-600 hover:underline"
 >
-  Service@doctorsaab.com
+{user?.clinic_email || "No Email Found"}
 </a>
 
                 </div>
-                <ChevronDown className="w-4 h-4 text-gray-400" />
+                {/* <ChevronDown className="w-4 h-4 text-gray-400" /> */}
               </div>
             </div>
           </div>

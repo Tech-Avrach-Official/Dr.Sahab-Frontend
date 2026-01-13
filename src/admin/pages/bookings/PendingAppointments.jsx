@@ -204,7 +204,7 @@ const PendingAppointments = () => {
                     <td className="px-6 py-4 text-right">
                       <button
                         onClick={() => handleAssignClick(booking)}
-                        className="px-5 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 text-xs font-bold transition-all shadow-md active:scale-95"
+                        className="px-4 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 text-xs font-bold transition-all shadow-md active:scale-95"
                       >
                         Assign Clinic
                       </button>
@@ -252,7 +252,7 @@ const PendingAppointments = () => {
 
       {/* MODAL */}
       {showAssignModal && selectedBooking && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-lg flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-[1rem] max-w-sm w-full shadow-xl overflow-hidden border border-white/20">
             <div className="bg-indigo-600  px-8 py-7 text-white relative">
               <h3 className="text-2xl font-bold">Assign Clinic</h3>

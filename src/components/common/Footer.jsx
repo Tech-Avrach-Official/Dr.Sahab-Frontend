@@ -1,5 +1,5 @@
 import React from "react";
-import { Instagram, Facebook, Youtube, Twitter } from "lucide-react";
+import { Instagram, Facebook, Youtube, Twitter, Mail ,Phone, MapPin} from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from '../../assets/drsaab logo.png';
 
@@ -14,15 +14,15 @@ const Footer = () => {
 
   ];
    const supportLinks= [
-    { name: "Help", path: "/help" },
-    { name: "Terms & Conditions", path: "/terms" },
-    { name: "Privacy Policy", path: "/privacypolicy" },
+    { name: "Help", path: "/Help" },
+    { name: "Terms & Conditions", path: "/Terms" },
+    { name: "Privacy Policy", path: "/privacy" },
     { name: "Contact Us", path: "/contact" },
 
   ];
   return (
     <footer className="p-5">
-      <div className="relative rounded-2xl mx-auto bg-gradient-to-b from-[#1D2236] to-[#2B4CA4] py-5">
+      <div className="relative rounded-2xl mx-auto bg-gradient-to-b from-[#1D2236] to-[#2B4CA4] py-12">
 
         {/* Grid Overlay */}
         {/* <div
@@ -37,8 +37,13 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="space-y-2 lg:col-span-4">
            
-               <img src={logo} alt="Logo"  className="h-22 w-32 mb-2"/>
-           
+             <div className="bg-blue-50 w-52 h-14 mx-2 px-2 rounded-xl flex items-center justify-center"> 
+  <img 
+    src={logo} 
+    alt="Logo"  
+    className="h-28 w-full object-contain"
+  />
+</div>
             <p className="text-gray-300 text-base leading-relaxed max-w-sm">
               Comprehensive dental services, confident smiles through personalized care.
             </p>
@@ -108,19 +113,19 @@ const Footer = () => {
                 href="https://www.google.com/maps/search/?api=1&query=Indore,+Madhya+Pradesh"
                 target="_blank"
                 rel="noopener noreferrer"
-                 className="hover:text-white">
-                  📍 Indore, Madhya Pradesh</a></li>
+                 className="flex items-center gap-3 hover:text-white"><MapPin size={24}/>
+                   Indore, Madhya Pradesh</a></li>
 
               <li>
                 <a href="tel:+917275901611"
-                className="hover:text-white">
-                  📞 +91 7275901611"</a></li>
+                className=" flex items-center gap-3 hover:text-white">
+                 <Phone size={24}/> +91 7275901611</a></li>
 
               <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=Service@doctorsaab.com"
               target="_blank"
               rel="noopener noreferrer" 
-              className="hover:text-white "><span>📩</span>
-              <span >Service@doctorsaab.com</span></a> </li>
+              className=" flex items-center gap-2 hover:text-white "><Mail size={24}/>
+              <span className="text-m">Service@doctorsaab.com</span></a> </li>
             </ul>
           </div>
         </div>

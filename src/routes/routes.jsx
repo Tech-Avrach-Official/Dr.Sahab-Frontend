@@ -29,6 +29,9 @@ import AdminContactList from "../admin/pages/admin-contact/AdminContactList";
 import BookingPage from "../pages/Booking-page/BookingPage";
 import AppointmentForm from "../pages/home/components/AppointmentForm";
 import { SearchCheck } from "lucide-react";
+import PrivacyPolicy from "../Support/PrivacyPolicy";
+import TermsAndConditions from "../Support/TermsandConditions";
+import HelpandFAQ from "../Support/HelpandFAQ";
 
 const AllRoutes = () => {
   return (
@@ -40,9 +43,11 @@ const AllRoutes = () => {
       <Route path="/book-appointment" element={<BookingPage />} />
       <Route path="/services/:id" element={<ServiceDetail />} />
       <Route path ="/services" element ={<Services/>}/>
-      
-      
-    
+      <Route path="/privacy" element={<PrivacyPolicy/>}/>
+       <Route path="/Terms" element={<TermsAndConditions/>}/>
+       <Route path="/Help" element={<HelpandFAQ/>}/>
+
+
     <Route path="/admin/login" element={<AdminLogin />} />
     <Route path="/appointment" element={<AppointmentForm/>} />
 
@@ -59,6 +64,7 @@ const AllRoutes = () => {
         {/* <Route path="/admin/users" element={<HomePage />} /> */}
         <Route path="/admin/bookings" element={<AllBookings />} />
         <Route path="/admin/all-clinics" element={<AllClinics />} />
+        {/* <Route path="/admin/clinic-details/:id" element={<ClinicProfile />} /> */}
         <Route path="/admin/create-clinic" element={<CreateClinic />} />
         <Route path="/admin/clinics/edit/:id" element={<EditClinic />} />
         <Route path="/admin/assigned-appointments" element={<AssignedAppointments />} />

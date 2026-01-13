@@ -189,7 +189,7 @@ const AssignedAppointments = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-right">
                       <button
                         onClick={() => handleViewClinic(booking.clinicId)}
-                        className="px-4 py-2 bg-blue-600 border border-blue-60 text-white rounded-lg hover:bg-blue-800 text-xs font-bold transition-all shadow-sm active:scale-95"
+                        className="px-4 py-3 bg-blue-600 border border-blue-60 text-white rounded-lg hover:bg-blue-800 text-xs font-bold transition-all shadow-sm active:scale-95"
                       >
                         View Details
                       </button>
@@ -237,7 +237,7 @@ const AssignedAppointments = () => {
 
       {/*  CLINIC MODAL */}
       {modalOpen && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-lg flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-[1rem] max-w-md w-full shadow-xl overflow-hidden border border-white/20 animate-in fade-in zoom-in duration-200">
             <div className="bg-indigo-600 px-8 py-4 text-white relative">
               <h3 className="text-2xl font-bold tracking-tight">Clinic Details</h3>
