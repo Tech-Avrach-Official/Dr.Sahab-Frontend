@@ -331,7 +331,7 @@ const AllBookings = () => {
           </div>
 
           {/* Pagination */}
-          <div className="bg-gray-50 px-6 py-4 border-t border-gray-200 flex items-center justify-between">
+          <div className=" bg-gray-50 px-6 py-4 border-t border-gray-200 flex items-center justify-between">
             <div className="flex-1 flex justify-between sm:hidden">
               <button
                 onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}

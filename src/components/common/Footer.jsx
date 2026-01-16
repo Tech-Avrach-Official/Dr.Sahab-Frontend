@@ -50,6 +50,7 @@ const Footer = () => {
 
             {/* Social Icons */}
             <div className="flex gap-3">
+               
               {[
                 { icon: <Instagram size={20} />, link: "https://www.instagram.com/_doctor.saab_/?utm_source=qr&igsh=MTQ5MmZuNzZlcnlsYg%3D%3D#" },
                 { icon: <Facebook size={20} />, link: "#" },
@@ -57,6 +58,7 @@ const Footer = () => {
                 { icon: <Youtube size={20} />, link: "#" },
               ].map((item, i) => (
                 <Link
+                 aria-label="social Profile"
                   key={i}
                   to={item.link}
                   className="w-10 h-10 rounded-full border border-white/30 hover:border-white hover:bg-white/10 flex items-center justify-center text-white transition-all"

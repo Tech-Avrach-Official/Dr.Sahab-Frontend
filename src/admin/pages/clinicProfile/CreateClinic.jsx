@@ -62,6 +62,11 @@ const CreateClinic = () => {
       return false;
     }
 
+
+    if (!password){
+      toast.error("Password is required")
+      return false;
+    }
     if (!password || password.length < 6) {
       toast.error("Password must be at least 6 characters");
       return false;

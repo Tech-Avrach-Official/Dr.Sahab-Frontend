@@ -8,16 +8,16 @@ const AboutSection = () => {
     return (
 
         <div>
-            <div className=' xl:px-32 px-4 py-10 xl:py-28'>
+            <div className=' xl:px-32 px-4 py-10  xl:py-18'>
                 <div className=" h-full xl:flex xl:h-[600px]">
-                    <div className='flex items-center justify-center w-full xl:w-1/2 h-[500px] md:h-[600px]  xl:pr-20'>
-                        <div className='w-[550px] h-full relative'>
+                    <div className='flex items-center justify-center w-full xl:w-1/2 h-[500px] md:h-[530px] xs:h-[420px] xl:pr-20'>
+                        <div className='w-[560px] h-full relative'>
                             <div className='w-full'>
-                                <img className='w-full md:w-[407px] rounded-[50px]' src="https://t3.ftcdn.net/jpg/04/11/46/26/360_F_411462636_lkNQ6m8tFSlIECaTKw0o1vQskkEcPzE0.jpg" alt="" />
+                                <img className='w-full  md:w-[460px] xl:w-[410px] rounded-[50px]' src="https://t3.ftcdn.net/jpg/04/11/46/26/360_F_411462636_lkNQ6m8tFSlIECaTKw0o1vQskkEcPzE0.jpg" alt="" />
                             </div>
 
-                            <div className='absolute right-0 bottom-0 h-[350px] bg-white border-[8px] border-white rounded-[30px] md:rounded-[50px] '>
-                                <img className='rounded-[30px] md:rounded-[50px] w-[300px] md:w-[384px] object-cover' src="https://thumbs.dreamstime.com/b/dental-treatment-14922498.jpg?w=768" alt="" />
+                            <div className='absolute right-0 bottom-0 bg-white border-[4px] border-white rounded-[30px] md:rounded-[50px] '>
+                                <img className='rounded-[30px] md:rounded-[50px] w-[420px] h-[270px] md:w-[420px]  xl:h-[250px] object-cover' src="https://hbgmedicalassistance.com/wp-content/uploads/2016/04/Dental-Treatment-in-India-Smile-all-the-way_11zon.jpeg" alt="" />
                             </div>
                             <div className='absolute bottom-20 right-64 md:top-16 md:right-14'>
                                 <img id='Rotet' className='rotate-360-infinite w-24 md:w-36 ' src="http://localhost:5174/src/assets/images/about-experience-circle.png" alt="" />
@@ -26,7 +26,7 @@ const AboutSection = () => {
                         </div>
                     </div>
                     <div className='xl:w-1/2 h-full'>
-                        <div className='mt-20'>
+                        <div className='mt-16  xl:mt-0'>
                             <div className='flex items-center gap-2'>
                                 <span><Star className='text-[#1E84B5] text-xl' /></span>
                                 <p className='text-[#1E84B5]'>ABOUT US</p>

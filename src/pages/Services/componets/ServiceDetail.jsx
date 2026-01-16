@@ -140,7 +140,7 @@ const ServiceDetail = () => {
               <CartoonButton label="Book an Appointment"  to="/appointment" className="w-full py-4 mt-5 text-lg font-bold bg-primary text-white rounded-xl" />
             </div>
 
-            {/* RIGHT SIDE (unchanged) */}
+            {/* RIGHT SIDE  */}
             <div className="lg:w-[30%]">
               <div className="sticky top-28 space-y-6">
                 {/* OTHER SERVICES */}

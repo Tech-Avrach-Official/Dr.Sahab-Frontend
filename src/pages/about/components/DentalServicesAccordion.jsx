@@ -39,7 +39,7 @@ const DentalServicesAccordion = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-white">
+    <section className="py-16 md:py-10  px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
@@ -64,7 +64,7 @@ const DentalServicesAccordion = () => {
           </div>
 
           {/* Right - Content */}
-          <div className="space-y-8 py-10">
+          <div className="space-y-8 py-6">
             <div className="space-y-4">
               <div className="flex items-center gap-2 text-primary">
                 <span><Star className="w-4 h-4" /></span>

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { CartoonButton } from "../../../components/ui/cartoon-button";
 import { useDispatch, useSelector } from "react-redux";
 import { createBooking } from "../../../global_redux/features/booking/bookingThunk";
@@ -7,7 +7,7 @@ import { resetBookingSucess } from "../../../global_redux/features/booking/booki
 
 const AppointmentForm = () => {
   const dispatch = useDispatch();
-  const { loading,success = false } = useSelector((state) => state.booking) || {};
+  const { loading, success = false } = useSelector((state) => state.booking) || {};
 
   const [formData, setFormData] = useState({
     name: "",
@@ -18,6 +18,7 @@ const AppointmentForm = () => {
     message: "",
   });
 
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -25,9 +26,10 @@ const AppointmentForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+ 
     // Map UI form fields → backend fields
     const payload = {
       name: formData.name,
@@ -40,21 +42,23 @@ const AppointmentForm = () => {
 
     dispatch(createBooking(payload));
   };
-//form reset after submit//
-   useEffect(()=>{
-if (success){
-  setFormData({
-     name: "",
-    phone: "",
-    dob: "",
-    bookingDate: "",
-    address: "",
-    message: "",
-  });
-  
-  dispatch(resetBookingSucess());
-}
-  },[success]);
+  //form reset after submit//
+  useEffect(() => {
+    if (success) {
+      setFormData({
+        name: "",
+        phone: "",
+        dob: "",
+        bookingDate: "",
+        address: "",
+        message: "",
+      });
+
+      dispatch(resetBookingSucess());
+    }
+  }, [success]);
+
+
 
   return (
     <div className="bg-[#f4f4f4c0] max-w-7xl mx-auto h-full backdrop-blur-xl rounded-3xl p-8 shadow-2xl overflow-y-auto ">
@@ -85,6 +89,9 @@ if (success){
             <input
               type="tel"
               name="phone"
+              pattern="[6-9]{1}[0-9]{9}"
+              maxLength="10"
+              title="Enter a valid phone number"
               value={formData.phone}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-lg border border-gray-500 bg-white/90 backdrop-blur-sm text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
@@ -97,10 +104,11 @@ if (success){
         {/* DOB, Booking Date and Address Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           <div>
-            <label className="block text-black text-sm font-medium mb-1">
+            <label htmlFor='dob' className="block text-black text-sm font-medium mb-1">
               Date of Birth
             </label>
             <input
+              id='dob'
               type="date"
               name="dob"
               value={formData.dob}
@@ -117,11 +125,15 @@ if (success){
             <input
               type="date"
               name="bookingDate"
+              min={new Date().toISOString().split("T")[0]}
+              title="Booking date cannot be in the past"
               value={formData.bookingDate}
               onChange={handleChange}
-              className="w-full px-4 py-2 rounded-lg border border-gray-500 bg-white/90 backdrop-blur-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
+              className=" w-full px-4 py-2 rounded-lg border border-gray-500 bg-white/90 backdrop-blur-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
               required
+              
             />
+      
           </div>
 
           <div>

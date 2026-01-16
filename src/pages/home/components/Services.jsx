@@ -23,7 +23,9 @@ import img16 from "../../../assets/service/img16.png";
 import img17 from "../../../assets/service/img17.png";
 import { CartoonButton } from "../../../components/ui/cartoon-button";
 
+
 const Services = () => {
+  
 const servicesList = [
   { img: img01, title: "Dental Checkup & X-Rays", popular: true, id: "dental-checkup-x-rays" },
   { img: img02, title: "Orthodontics (Braces)", popular: false, id: "orthodontics-braces" },
@@ -45,6 +47,8 @@ const servicesList = [
 
 
   return (
+   
+    
     <div className="py-20 bg-gradient-to-b from-white via-blue-50/30 to-white relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
@@ -139,7 +143,7 @@ const servicesList = [
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx="true">{`
         @keyframes blob {
           0%, 100% {
             transform: translate(0, 0) scale(1);
@@ -165,6 +169,7 @@ const servicesList = [
         }
       `}</style>
     </div>
+  
   );
 };
 

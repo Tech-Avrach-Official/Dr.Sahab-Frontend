@@ -20,3 +20,7 @@
 .rotate-360-infinite {
   animation: rotate360 20s linear infinite;
 }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}

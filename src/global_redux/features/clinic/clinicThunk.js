@@ -28,12 +28,12 @@ export const createClinic = createAsyncThunk(
         password,
       });
 
-      toast.success("Clinic created successfully!");
+     
       return res.data;
     } catch (error) {
       const err =
         error.response?.data?.message || "Failed to create clinic!";
-      toast.error(err);
+     
       return rejectWithValue(err);
     }
   }

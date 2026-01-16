@@ -14,7 +14,7 @@ const AdminLayout = () => {
       {/* Right side content */}
       <div className="flex-1">
         {/* <Navbar /> */}
-       <div className='sticky top-0 z-50'>
+       <div className='sticky top-0 z-50  '>
          <AdminHeader/>
        </div>
         <main className="flex-1 bg-gray-50 p-6 overflow-y-auto">

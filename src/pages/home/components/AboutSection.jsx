@@ -45,10 +45,10 @@ const AboutSection = () => {
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 border border-gray-400 px-3 py-1 rounded-full text-gray-700">
               <span className="w-2 h-2 bg-gray-800 rounded-full"></span>
-              <span className="text-sm font-medium">About Us</span>
+              <span className="text-lg font-medium">About Us</span>
             </div>
             
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-2xl md:text-4xl font-semibold text-gray-900 leading-tight">
               Experience Excellence in Medical Care
             </h1>
             

@@ -216,11 +216,11 @@ const PendingAppointments = () => {
           </div>
 
           {/* PAGINATION UI */}
-          <div className="flex items-center justify-between px-6 py-4 bg-gray-50/50 border-t">
+          <div className="flex flex-col items-center sm:flex-row  justify-between px-6 py-4 bg-gray-50/50 border-t">
             <button
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               disabled={currentPage === 1}
-              className="px-4 py-2 text-sm font-bold bg-white border border-gray-200 rounded-xl shadow-sm hover:bg-gray-50 disabled:opacity-50 transition-all"
+              className=" w-full px-4 py-2 text-sm sm:w-auto font-bold bg-white border border-gray-200 rounded-xl shadow-sm hover:bg-gray-50 disabled:opacity-50 transition-all"
             >
               Previous
             </button>
@@ -230,7 +230,7 @@ const PendingAppointments = () => {
             <button
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages || totalPages === 0}
-              className="px-4 py-2 text-sm font-bold bg-white border border-gray-200 rounded-xl shadow-sm hover:bg-gray-50 disabled:opacity-50 transition-all"
+              className="px-4 py-2 text-sm w-full sm:w-auto  font-bold bg-white border border-gray-200 rounded-xl shadow-sm hover:bg-gray-50 disabled:opacity-50 transition-all"
             >
               Next
             </button>

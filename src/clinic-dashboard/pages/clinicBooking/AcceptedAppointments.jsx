@@ -245,7 +245,7 @@ const AcceptedAppointments = () => {
         </div>
       )}
 
-      {/* Modal - Unchanged UI */}
+      {/* Modal -UI */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">
           <div className="bg-white p-8 rounded-2xl w-full max-w-sm shadow-2xl">

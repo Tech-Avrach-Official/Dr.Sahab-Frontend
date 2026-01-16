@@ -165,7 +165,7 @@ const CompletedAppointments = () => {
                       <div className="text-[10px] font-mono text-gray-400">#{booking._id?.slice(-6)}</div>
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-600 font-medium">{booking.phone}</td>
-                    <td className="px-6 py-4 text-sm text-gray-600">
+                    <td className=" px-6 py-4 text-sm text-gray-600">
                       <div className="flex items-center gap-1">
                        
                         {formatDate(booking.bookingDate)}
@@ -184,9 +184,9 @@ const CompletedAppointments = () => {
                     <td className="px-4 py-4 text-right">
                       <button
                         onClick={() => handleViewClinic(booking.clinicId)}
-                        className="px-5 py-3 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-900 transition-all shadow-sm active:scale-95"
+                        className="px-6 py-3 flex gap-1 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-900 transition-all shadow-sm active:scale-95"
                       >
-                        View Clinic
+                      <span> View </span> Clinic
                       </button>
                     </td>
                   </tr>

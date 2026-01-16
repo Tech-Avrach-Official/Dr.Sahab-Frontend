@@ -110,17 +110,15 @@ submenu: [
 
           {/* Book Appointment Button - Desktop */}
           <div className="hidden md:block">
-            {/* <button className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-all hover:scale-105 flex items-center gap-2 font-semibold shadow-lg">
-              <Calendar size={18} />
-              Book Appointment
-            </button> */}
+            
             <CartoonButton onClick={() => navigate('/book-appointment')} label="Book Appointment" className='bg-primary px-5 py-2 rounded-full text-white' />
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button
+            <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+               aria-label="Open Menu"
               className="text-gray-700 hover:text-indigo-600 focus:outline-none"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}

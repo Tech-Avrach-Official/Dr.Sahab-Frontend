@@ -81,7 +81,7 @@ export const servicesData = {
   },
   "teeth-whitening-bleaching": {
     title: "Teeth Whitening & Bleaching",
-    image: "https://www.doshidentalcare.com/wp-content/uploads/2019/12/teeth-whitening-in-office.jpg",
+    image: "https://doctorsunilkumar.com/wp-content/uploads/2023/01/4.jpg",
     description: [
       "Professional Teeth Whitening: Brighten Your Smile in Just One Visit",
 

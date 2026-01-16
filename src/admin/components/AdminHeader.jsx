@@ -4,8 +4,8 @@ import React from 'react'
 
 const AdminHeader = () => {
   return (
-     <header className="bg-white shadow-sm">
-          <div className="flex items-center justify-between px-6 py-4">
+     <header className=" bg-white shadow-sm  ">
+          <div className="  flex items-center justify-between px-6 py-4  ">
             {/* <button
               onClick={() => setSidebarOpen(true)}
               className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors mr-4"
@@ -53,4 +53,4 @@ const AdminHeader = () => {
   )
 }
 
-export default AdminHeader
+export default AdminHeader;

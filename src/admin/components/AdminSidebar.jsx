@@ -19,7 +19,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../global_redux/features/auth/authSlice";
 // import { logout } from "@/global_redux/features/auth/authSlice";
 
-const AdminSidebar = () => {
+ const AdminSidebar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [openSubMenu, setOpenSubMenu] = useState(null);
   const dispatch = useDispatch();
